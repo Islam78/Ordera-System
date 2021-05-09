@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Delivary</title>
+    <!-- css Files -->
+    <link rel="stylesheet" href=".././css/delivaryInfo.css">
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+        integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <!-- fontawesome -->
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <!-- <link rel="stylesheet" href="../css/fontawesome-all.css"> -->
+
+</head>
+
+<body>
+
+    <!-- start navbar  -->
+    <div class="NavSection">
+        <!-- start nav -->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">
+                    <!-- logo -->
+                    <div class="logo">
+                        <i class="icon fas fa-map-marker-alt"></i>
+                        <span>Ordera</span>
+                    </div>
+                    <!-- end logo -->
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse navbar-item" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#"> Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">About us</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Catalog</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Contacts</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="collapse navbar-collapse navbar-icon" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item phone">
+                            <a class="nav-link  text-light">
+                                <i class="fas fa-phone"></i> <span>01119660669</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-light" href="#">
+                                <i class="fas fa-user-alt"></i>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-light" href="#">
+                                <i class="fas fa-cart-plus"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- end nav -->
+    </div>
+    <!-- end header -->
+
+    <!-- start pop up -->
+    <button type="button" id="openModal" hidden data-toggle="modal" data-target="#exampleModalCenter">
+    </button>
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Location</h5>
+                </div>
+                <div class="modal-body">
+                    <button class="btn btn-info text-center" onclick="getLocatio()">Allow Location</button>
+                    <p id="location"></p>
+                    <input type="search" name="location" class="form-control" placeholder="What's Your location" id="">
+                    <div class="returnedlocation">
+                        <ul class="list-group mt-3">
+                            <li class="list-group-item">cairo</li>
+                            <li class="list-group-item">6'octoper</li>
+                            <li class="list-group-item">Morbi leo risus</li>
+                            <li class="list-group-item">Porta ac consectetur ac</li>
+                            <li class="list-group-item">Vestibulum at eros</li>
+                        </ul>
+                    </div>
+                    <div class="mt-5">
+                        <select class="form-control" name="" id="">
+                            <option value="" selected hidden>اختر الفرع</option>
+                            <option value="">حصري</option>
+                            <option value="">مدرسة كذا كذا</option>
+                            <option value="">اي حاجة </option>
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="close" class="btn btn-primary" onclick="ShowMenu()"
+                        data-dismiss="modal">get menu</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end pop up -->
+    <!-- start menu -->
+    <menu id="menu">
+        <div class="container text-center">
+            <!-- start detail -->
+            <div class="details mb-3">
+                <img src="../images/mac.jpg" alt="">
+                <h2 class="">ماكدونالز</h2>
+                <h6 class="">برجر , وجبات سريعه , فطار</h6>
+            </div>
+            <!-- end detail -->
+            <!-- start menuDetail -->
+            <div class="menuDetail text-center" id="accordion">
+                <div class="card">
+                    <div class="card-header" id="headingOne">
+                        <h5 class="mb-0">
+                            <button class="btn " data-toggle="collapse" data-target="#collapseOne" aria-expanded="true"
+                                aria-controls="collapseOne">
+                                special offers
+                            </button>
+                        </h5>
+                    </div>
+                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                        <div class="card-body">
+                            <ul class="list-group">
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    <img src="../images/food.jpg" alt="">
+                                    <p>مكس 2 وجبة متوسطة</p>
+                                    <h6>ج.م 56.00</h6>
+                                    <span class="badge badge-pill" type="button">
+                                        <i class="fas fa-plus"></i>
+                                    </span>
+                                </li>
+                                <!--start for test -->
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    <img src="../images/food.jpg" alt="">
+                                    <p>مكس 2 وجبة متوسطة</p>
+                                    <h6>ج.م 56.00</h6>
+                                    <span class="badge badge-pill" type="button">
+                                        <i class="fas fa-plus"></i>
+                                    </span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    <img src="../images/food.jpg" alt="">
+                                    <p>مكس 2 وجبة متوسطة</p>
+                                    <h6>ج.م 56.00</h6>
+                                    <span class="badge badge-pill" type="button">
+                                        <i class="fas fa-plus"></i>
+                                    </span>
+                                </li>
+                                <!-- end for test -->
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header" id="headingTwo">
+                        <h5 class="mb-0">
+                            <button class="btn  collapsed" data-toggle="collapse" data-target="#collapseTwo"
+                                aria-expanded="false" aria-controls="collapseTwo">
+                                Meat
+                            </button>
+                        </h5>
+                    </div>
+                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                        <div class="card-body">
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <img src="../images/food.jpg" alt="">
+                                <p>مكس 2 وجبة متوسطة</p>
+                                <h6>ج.م 56.00</h6>
+                                <span class="badge badge-pill" type="button">
+                                    <i class="fas fa-plus"></i>
+                                </span>
+                            </li>
+                            <!-- start for test  -->
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <img src="../images/food.jpg" alt="">
+                                <p>مكس 2 وجبة متوسطة</p>
+                                <h6>ج.م 56.00</h6>
+                                <span class="badge badge-pill" type="button">
+                                    <i class="fas fa-plus"></i>
+                                </span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <img src="../images/food.jpg" alt="">
+                                <p>مكس 2 وجبة متوسطة</p>
+                                <h6>ج.م 56.00</h6>
+                                <span class="badge badge-pill" type="button">
+                                    <i class="fas fa-plus"></i>
+                                </span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <img src="../images/food.jpg" alt="">
+                                <p>مكس 2 وجبة متوسطة</p>
+                                <h6>ج.م 56.00</h6>
+                                <span class="badge badge-pill" type="button">
+                                    <i class="fas fa-plus"></i>
+                                </span>
+                            </li>
+                            <!--end for test  -->
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header" id="headingThree">
+                        <h5 class="mb-0">
+                            <button class="btn  collapsed" data-toggle="collapse" data-target="#collapseThree"
+                                aria-expanded="false" aria-controls="collapseThree">
+                                Chicken
+                            </button>
+                        </h5>
+                    </div>
+                    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+                        <div class="card-body">
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <img src="../images/food.jpg" alt="">
+                                <p>مكس 2 وجبة متوسطة</p>
+                                <h6>ج.م 56.00</h6>
+                                <span class="badge badge-pill" type="button">
+                                    <i class="fas fa-plus"></i>
+                                </span>
+                            </li>
+                            <!-- start for test -->
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <img src="../images/food.jpg" alt="">
+                                <p>مكس 2 وجبة متوسطة</p>
+                                <h6>ج.م 56.00</h6>
+                                <span class="badge badge-pill" type="button">
+                                    <i class="fas fa-plus"></i>
+                                </span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <img src="../images/food.jpg" alt="">
+                                <p>مكس 2 وجبة متوسطة</p>
+                                <h6>ج.م 56.00</h6>
+                                <span class="badge badge-pill" type="button">
+                                    <i class="fas fa-plus"></i>
+                                </span>
+                            </li>
+                            <!-- end for test -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end menuDetail -->
+        </div>
+    </menu>
+    <!-- end menu -->
+
+
+    <!-- *********************************************likes************************************************ -->
+    <!-- bootstrap  -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
+        crossorigin="anonymous"></script>
+    <!-- fontawesome -->
+    <script src="../scripts/fontawesome-all.js"></script>
+    <!-- my Project Files -->
+    <script src="../scripts/app.js"></script>
+    <script>
+        document.getElementById('openModal').click()
+        function ShowMenu() {
+
+            document.getElementById('menu').style.display = 'inline'
+        }
+        var x = document.getElementById('location')
+        function getLocatio() {
+            if (navigator.geolocation) {
+                
+                navigator.geolocation.getCurrentPosition(showPosition);
+            } else {
+                x.innerHTML = "Geolocation is not supported by this browser.";
+            }
+        }
+        function showPosition(position) {
+            x.innerHTML = "Latitude: " + position.coords.latitude +
+                "<br>Longitude: " + position.coords.longitude;
+        }
+    </script>
+</body>
+
+</html>

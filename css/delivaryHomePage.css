@@ -31,7 +31,7 @@ body {
   font-size: 30px;
   margin-bottom: 3px;
 }
-.logo  span{
+.logo span {
   color: white !important;
   text-transform: uppercase;
   font-weight: 800;
@@ -102,23 +102,30 @@ body {
   padding: 30px;
 }
 .supCategory .item {
+  text-decoration: none;
+  color: black;
   background-color: #f2efe6;
   border-radius: 20px;
   height: 160px;
   padding: 20px;
   margin-top: 20px;
+  padding: 50px;
 }
+
 .supCategory .item .icon {
   font-size: 100px;
   background: #f7b614;
   padding: 20px;
   border-radius: 50%;
+  position: relative;
+  left: -28px;
+  top: 30px;
 }
 .supCategory .item .Catname {
   font-size: 18px;
   position: relative;
-  top: -25px;
-  left: 10px;
+  top: 0px;
+  left: 0px;
   font-weight: 700;
 }
 /* end supCategory */
@@ -257,9 +264,8 @@ header .app img {
 }
 /* end header */
 
-
 /* *********************TransHomePage*************************** */
-.map{
+.map {
   min-height: 600px;
   background-color: white;
 }
@@ -280,11 +286,12 @@ header .app img {
   .SitAdvantage .sit {
     padding: 5px;
   }
- 
+
   /* start content */
   header .contact {
     color: white;
-    padding: 10px;}
+    padding: 10px;
+  }
   header .content .element .header {
     margin-top: 10px;
   }
@@ -294,4 +301,9 @@ header .app img {
   }
   /* end content */
 }
-
+@media (min-width: 300px) and (max-width: 635px) {
+  .supCategory .item .Catname {
+    top: 30px;
+    left: 20px;
+  }
+}
