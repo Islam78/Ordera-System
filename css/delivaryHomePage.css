@@ -1,0 +1,309 @@
+/* start role */
+body {
+  overflow-x: hidden;
+  background-color: #ffffff;
+}
+.logo .icon {
+  color: #f7b614;
+}
+/* end role */
+
+/* start header  */
+.NavSection {
+  width: 103%;
+  height: auto;
+  background-color: #282932;
+  background-image: url("../images/slider-glob.png");
+  background-position: bottom center;
+  background-repeat: no-repeat;
+  border-radius: 0 0 2000px 0px;
+}
+/* start nav  */
+.NavSection nav {
+  background-color: #282932 !important;
+  border-bottom: 1px dashed #545454;
+}
+/* start logo */
+.logo {
+  display: inline;
+}
+.logo .icon {
+  font-size: 30px;
+  margin-bottom: 3px;
+}
+.logo span {
+  color: white !important;
+  text-transform: uppercase;
+  font-weight: 800;
+  font-size: 30px;
+}
+/* end logo */
+/* start navbar-item */
+.NavSection nav .navbar-item * {
+  color: white !important;
+}
+.NavSection nav .navbar-item ul {
+  margin: 0 auto;
+}
+.NavSection nav .navbar-item ul li {
+  margin-left: 15px;
+}
+.NavSection nav .navbar-item ul .active,
+.NavSection nav .navbar-item ul li a:hover {
+  color: #f7b614 !important;
+}
+/* end navbar-item */
+
+/* start navbar-icon */
+.NavSection nav .navbar-icon {
+  width: 0;
+}
+.NavSection nav .navbar-icon ul li {
+  margin-left: 15px;
+}
+.NavSection nav .navbar-icon .phone span {
+  color: #f7b614;
+  font-weight: 700;
+  margin-left: 5px;
+}
+.NavSection nav .navbar-icon .fa-phone {
+  transform: rotate(90deg);
+  -o-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  -moz-transform: rotate(90deg);
+}
+/* end navbar-icon */
+/* end nav  */
+
+/* start content */
+.NavSection .content {
+  overflow: hidden;
+}
+.NavSection .content .element .header {
+  color: #f7b614;
+  margin-top: 250px;
+  margin-left: 15px;
+  font-size: 80px;
+  font-weight: 700;
+}
+.NavSection .content .element .header span {
+  color: white;
+}
+.NavSection .content .image img {
+  width: 110%;
+  left: -50px;
+  position: relative;
+  top: 10px;
+}
+/* end content */
+
+/* start supCategory */
+.supCategory {
+  padding: 30px;
+}
+.supCategory .item {
+  text-decoration: none;
+  color: black;
+  background-color: #f2efe6;
+  border-radius: 20px;
+  height: 160px;
+  padding: 20px;
+  margin-top: 20px;
+  padding: 50px;
+}
+
+.supCategory .item .icon {
+  font-size: 100px;
+  background: #f7b614;
+  padding: 20px;
+  border-radius: 50%;
+  position: relative;
+  left: -28px;
+  top: 30px;
+}
+.supCategory .item .Catname {
+  font-size: 18px;
+  position: relative;
+  top: 0px;
+  left: 0px;
+  font-weight: 700;
+}
+/* end supCategory */
+/* end header  */
+
+/* start PopularFoods */
+.PopularFoods {
+  margin-top: 50px;
+}
+.PopularFoods .content {
+  padding: 30px;
+}
+.PopularFoods .content img {
+  width: 100%;
+}
+.PopularFoods .content p {
+  font-size: 15px;
+  color: gray;
+}
+.PopularFoods .content .price {
+  font-weight: 800;
+}
+.PopularFoods .content .add {
+  margin-top: 15px;
+  background-color: #f7b614;
+  border-radius: 25px;
+  border: none;
+  font-weight: 700;
+  padding: 10px;
+  width: 150px;
+  transition: all 0.5s;
+}
+.PopularFoods .content .add:hover {
+  color: white;
+  background-color: black;
+}
+/* end PopularFoods */
+
+/* start SitAdvantage */
+.SitAdvantage {
+  background-color: #282932;
+  margin-top: 50px;
+  color: white;
+  height: auto;
+  padding-bottom: 50px;
+}
+.SitAdvantage .image {
+  height: 100%;
+}
+.SitAdvantage .image img {
+  width: 100%;
+  height: 100%;
+}
+.SitAdvantage .sit {
+  padding: 140px;
+  background-image: url("./../images/sit-bg.png");
+  background-repeat: no-repeat;
+  background-position: right;
+}
+.SitAdvantage .sit h1 {
+  color: #f7b614;
+  font-size: 50px;
+}
+.SitAdvantage .sit > p {
+  margin-top: 25px;
+  color: #a0a0a0;
+}
+.SitAdvantage .sit h1 span {
+  color: white;
+}
+.SitAdvantage .list {
+  margin-top: 50px;
+  margin-bottom: 30px;
+}
+.SitAdvantage .list .icon {
+  font-size: 50px;
+  color: #f7b614;
+  margin-bottom: 10px;
+  margin-top: 20px;
+}
+.SitAdvantage .list span {
+  font-weight: 600;
+}
+.SitAdvantage .list button {
+  margin-top: 50px;
+  border: none;
+  border-radius: 20px;
+  background-color: #f7b614;
+  padding: 15px;
+  width: 200px;
+  font-weight: 600;
+}
+/* end SitAdvantage */
+
+/* start header */
+header {
+  padding-top: 20px;
+  background-color: #282932;
+  border-top: 5px dotted #484848;
+}
+header .contact {
+  color: white;
+  padding: 80px;
+}
+
+header .contact h1 span {
+  color: #f7b614;
+}
+header .contact > p {
+  margin-top: 30px;
+  color: #ababab;
+  font-size: 20px;
+  margin-bottom: 35px;
+}
+
+header .contact > ul {
+  list-style: none;
+}
+header .contact > ul li {
+  font-weight: 600;
+  margin-top: 20px;
+}
+header .contact > ul li span {
+  padding: 4px 0px 0px 0px;
+  background: #f7b815;
+  border-radius: 50%;
+  width: 55px;
+  height: 55px;
+  border: 10px solid;
+  display: inline-block;
+  margin-right: 10px;
+}
+header .app img {
+  background-image: url("../images/app-bg.png");
+  width: 100%;
+}
+/* end header */
+
+/* *********************TransHomePage*************************** */
+.map {
+  min-height: 600px;
+  background-color: white;
+}
+
+/* mobile Reviwe */
+@media (min-width: 320px) and (max-width: 800px) {
+  header nav .navbar-icon ul {
+    display: inline;
+    margin-left: 0;
+  }
+  header nav .navbar-icon ul li span {
+    font-size: 12px;
+  }
+  header nav .navbar-icon ul li {
+    width: 29%;
+    float: left;
+  }
+  .SitAdvantage .sit {
+    padding: 5px;
+  }
+
+  /* start content */
+  header .contact {
+    color: white;
+    padding: 10px;
+  }
+  header .content .element .header {
+    margin-top: 10px;
+  }
+  header .content .image img {
+    width: 120%;
+    left: -55px;
+  }
+  /* end content */
+}
+@media (min-width: 300px) and (max-width: 635px) {
+  .supCategory .item .Catname {
+    top: 30px;
+    left: 20px;
+  }
+}
