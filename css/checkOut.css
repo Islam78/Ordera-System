@@ -47,6 +47,10 @@ body {
   }
   /* end navbar-item */
   /* checkout */
-  .checkout{
+  /* .checkout{
     padding: 20px;
+  } */
+  .card-body
+  {
+    overflow: auto;
   }
