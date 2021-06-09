@@ -1,5 +1,6 @@
-body {
+body,html, .Captin {
   overflow-x: hidden;
+  
 }
 /* start header  */
 .NavSection {
