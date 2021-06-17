@@ -6,9 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>order state</title>
+    <title>Delivary</title>
     <!-- css Files -->
-    <link rel="stylesheet" href=".././css/orderState.css">
+    <link rel="stylesheet" href=".././css/Admin.css">
     <!-- bootstrap -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
         integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
@@ -16,10 +16,12 @@
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
         integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
     <!-- <link rel="stylesheet" href="../css/fontawesome-all.css"> -->
+    <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
 
 </head>
 
 <body>
+
     <!-- start navbar  -->
     <div class="NavSection">
         <!-- start nav -->
@@ -82,28 +84,74 @@
         <!-- end nav -->
     </div>
     <!-- end header -->
-    <!-- start orderState -->
-    <div class="orderState text-center mt-5">
-        <!-- detail -->
-        <div class="details mb-3">
-            <img src="../images/mac.jpg" alt="">
-            <h2 class="">Kareem Mohamed</h2>
-            <h6 class="">Delivery ID:34454635</h6>
-            <h6 class="">Arrived In 30 min</h6>
-            <h6 class="">Order No. :34454635</h6>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="far fa-star"></i>
-            <i class="far fa-star"></i>
-            <br>
-            <a href="./delivaryHomePage.html">
-                <button class="btn btn-info mt-3">Go to Home</button>
-            </a>
+    <!-- start cart -->
+    <div class="p-3">
+        <div class="row mt-3">
+            <div class="col-md-12">
+                <div class="panel panel-info panel-shadow">
+                    <div class="panel-body">
+                        <div class="d-flex mb-2">
+                            <div></div>
+                            <a href="./AdminAllUsers.html">
+                                <button class="btn btn-success">
+                                    Show All Users
+                                </button>
+                            </a>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Id</th>
+                                        <th>Name</th>
+                                        <th>Location</th>
+                                        <th>Driver number</th>
+                                        <th>card number</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Kareem</td>
+                                        <td>Cairo, Egypt</td>
+                                        <td>4551147</td>
+                                        <td>19982144855214</td>
+                                        <td>
+                                            <button class="btn btn-danger" data-toggle="modal"
+                                                data-target="#exampleModalCenter">Refuse</button>
+                                            <button class="btn btn-success">Accept</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
+    <!-- start pop up -->
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Refuse</h5>
+                </div>
+                <div class="modal-body">
+                    <label for="Reason">Reason:</label>
+                    <textarea class="form-control" name="" id="" placeholder="......" cols="30" rows="5"></textarea>
 
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="close" class="btn btn-danger" onclick="ShowMenu()"
+                        data-dismiss="modal">Refuse</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- *********************************************likes************************************************ -->
     <!-- bootstrap  -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
@@ -116,7 +164,23 @@
     <script src="../scripts/fontawesome-all.js"></script>
     <!-- my Project Files -->
     <script src="../scripts/app.js"></script>
+    <script>
+        
+        var xhr = new XMLHttpRequest();
+        xhr.withCredentials = true;
 
+        xhr.addEventListener("readystatechange", function () {
+            if (this.readyState === 4) {
+                console.log(this.responseText);
+            }
+        });
+
+        xhr.open("GET", "http://localhost/bioserver/apis/get_sequences.php");
+        xhr.setRequestHeader("khayal1Token", "khayal123");
+        xhr.setRequestHeader("token", "c77b6074ba91f7a77e03dd46e9eea9bad26da99ffc5da4a39c9be84a86525fcc");
+
+        xhr.send();
+    </script>
 </body>
 
 </html>
