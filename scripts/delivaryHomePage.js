@@ -12,6 +12,7 @@ function restorant() {
                 console.log('successful');
                 window.location.href = '../pages/delivaryCategory.html'
                 localStorage.setItem('delivary', JSON.stringify(data))
+                localStorage.setItem('Urldelvar','foods')
             } else {
                 console.log('failed');
             }
@@ -32,6 +33,8 @@ function stationary() {
                 console.log('successful');
                 window.location.href = '../pages/delivaryCategory.html'
                 localStorage.setItem('delivary', JSON.stringify(data))
+                localStorage.setItem('Urldelvar','groceries')
+
             } else {
                 console.log('failed');
             }
@@ -52,6 +55,8 @@ function supermarket() {
                 console.log('successful');
                 window.location.href = '../pages/delivaryCategory.html'
                 localStorage.setItem('delivary', JSON.stringify(data))
+                localStorage.setItem('Urldelvar','tools')
+                
             } else {
                 console.log('failed');
             }

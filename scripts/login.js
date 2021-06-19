@@ -12,6 +12,7 @@ function Login() {
                 console.log('successful');
                 document.getElementById('DataErr').style.display = 'none'
                 window.location.href = './selectType.html'
+                localStorage.setItem('user', JSON.stringify(FormData))
             } else {
                 console.log('failed');
                 document.getElementById('DataErr').innerHTML = 'Invalid User'
