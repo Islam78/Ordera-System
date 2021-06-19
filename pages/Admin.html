@@ -163,9 +163,9 @@
     <!-- fontawesome -->
     <script src="../scripts/fontawesome-all.js"></script>
     <!-- my Project Files -->
-    <script src="../scripts/app.js"></script>
+    <script src="../scripts/Admin.js"></script>
     <script>
-        
+
         var xhr = new XMLHttpRequest();
         xhr.withCredentials = true;
 
@@ -175,11 +175,14 @@
             }
         });
 
-        xhr.open("GET", "http://localhost/bioserver/apis/get_sequences.php");
+        xhr.open("POST", "https://jsonplaceholder.typicode.com/posts");
+
         xhr.setRequestHeader("khayal1Token", "khayal123");
         xhr.setRequestHeader("token", "c77b6074ba91f7a77e03dd46e9eea9bad26da99ffc5da4a39c9be84a86525fcc");
 
         xhr.send();
+
+
     </script>
 </body>
 

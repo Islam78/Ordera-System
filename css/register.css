@@ -74,3 +74,10 @@ body {
 .logo .icon {
   font-size: 25px;
 }
+
+.Error{
+  color: red;
+  font-size: 15px;
+  font-weight: bold;
+  float: left;
+}
