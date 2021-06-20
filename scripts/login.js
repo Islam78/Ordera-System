@@ -11,8 +11,15 @@ function Login() {
             if (this.status === 200) {
                 console.log('successful');
                 document.getElementById('DataErr').style.display = 'none'
-                window.location.href = './selectType.html'
-                localStorage.setItem('user', JSON.stringify(FormData))
+                res = JSON.parse(this.responseText).result
+                localStorage.setItem('user', JSON.stringify(res))
+                if (res.delvary) {
+                    console.log('delvary');
+                    window.location.href = './Captin.html'
+                }else {
+                    window.location.href = './selectType.html'
+                    console.log('user');
+                }
             } else {
                 console.log('failed');
                 document.getElementById('DataErr').innerHTML = 'Invalid User'
