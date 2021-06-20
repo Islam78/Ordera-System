@@ -10,21 +10,21 @@ function GetQuick() {
             if (this.status === 200) {
                 data = JSON.parse(this.responseText).result
                 console.log(data);
-                var ChildData 
-                for(child of data){
-                    ChildData+= `
+                var ChildData
+                for (child of data) {
+                    ChildData += `
                     <div class="col-lg-3 col-md-6 col-sm-6 col-ms-12 col-xs-12">
-                <div class="content text-center">
-                    <img src="${child.image}" alt="">
-                    <h5 class="text-center">${child.name}</h5>
-                    <p>${child.description}</p>
-                    <h4 class="price">${child.price}$</h4>
-                    <button class="btn add">Add to cart</button>
-                </div>
-            </div>
+                        <div class="content text-center">
+                            <img src="${child.image}" alt="">
+                            <h5 class="text-center mt-3">${child.name}</h5>
+                            <p>${child.description}</p>
+                            <h4 class="price">${child.price} EGP</h4>
+                            <button class="btn add">Add to cart</button>
+                        </div>
+                    </div>
                     `
                 }
-                ChildData = ChildData.replace('undefined','')
+                ChildData = ChildData.replace('undefined', '')
                 document.getElementById('row').innerHTML = ChildData
                 console.log(data);
                 console.log('successful');
@@ -37,7 +37,7 @@ function GetQuick() {
     xhr.open("GET", "https://orderasystem.herokuapp.com/home/quick");
 
     xhr.send(data);
-}GetQuick()
+} GetQuick()
 
 
 data = ""

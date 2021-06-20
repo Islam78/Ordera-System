@@ -24,11 +24,13 @@ xhr.addEventListener("readystatechange", function () {
                     // res.description.slice(0,10)
                     subData += `
                     <div class="card col-md-4 mt-1"> 
-                    <img src="${res.image}">
+                    <div class="image">
+                        <img src="${res.image}">
+                    </div>
                     <div class="card-body pt-0 px-0 ">
                         <div class="d-flex flex-row justify-content-between mb-0 px-3">
-                         <small class="text-muted mt-1">${res.name}</small>
-                            <h6>${res.price}$</h6>
+                         <p class="text-muted mt-1 Itemname">${res.name}</p>
+                            <h6>${res.price} EGP</h6>
                         </div>
                         <hr class="mt-2 mx-3">
                         <div class="d-flex flex-row justify-content-between px-3 pb-4">
@@ -97,19 +99,19 @@ function AddCart(re, s) {
         "price": "100",
         "user_location": "AlMotamayez District, 6th of october, Egypt",
         "prudect_location": headers.description
-      });
-      console.log(headers);
+    });
+    console.log(headers);
     //   var xhr = new XMLHttpRequest();
     //   xhr.withCredentials = true;
-      
+
     //   xhr.addEventListener("readystatechange", function() {
     //     if(this.readyState === 4) {
     //       console.log(this.responseText);
     //     }
     //   });
-      
+
     //   xhr.open("POST", "https://orderasystem.herokuapp.com/cart/addcart");
     //   xhr.setRequestHeader("Content-Type", "application/json");
-      
+
     //   xhr.send(data);
 }
