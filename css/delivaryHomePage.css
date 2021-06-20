@@ -139,7 +139,9 @@ body {
   padding: 30px;
 }
 .PopularFoods .content img {
-  width: 100%;
+  width: 60%;
+  border-radius: 50%;
+  border: 3px solid #cfcfcf66;
 }
 .PopularFoods .content p {
   font-size: 15px;
