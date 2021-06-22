@@ -1,0 +1,161 @@
+body {
+  overflow-x: hidden;
+}
+/* start header  */
+.NavSection {
+  width: 103%;
+  height: auto;
+  background-color: #282932;
+  background-image: url("../images/slider-glob.png");
+  background-position: bottom center;
+  background-repeat: no-repeat;
+  border-radius: 0 0 2000px 0px;
+}
+/* start nav  */
+.NavSection nav {
+  background-color: #282932 !important;
+  border-bottom: 1px dashed #545454;
+}
+/* start logo */
+.logo {
+  display: inline;
+}
+.logo .icon {
+  font-size: 30px;
+  margin-bottom: 3px;
+}
+.logo span {
+  color: white !important;
+  text-transform: uppercase;
+  font-weight: 800;
+  font-size: 30px;
+}
+/* end logo */
+/* start navbar-item */
+.NavSection nav .navbar-item * {
+  color: white !important;
+}
+.NavSection nav .navbar-item ul {
+  margin: 0 auto;
+}
+.NavSection nav .navbar-item ul li {
+  margin-left: 15px;
+}
+.NavSection nav .navbar-item ul .active,
+.NavSection nav .navbar-item ul li a:hover {
+  color: #f7b614 !important;
+}
+/* end navbar-item */
+
+/* start navbar-icon */
+.NavSection nav .navbar-icon {
+  width: 0;
+}
+.NavSection nav .navbar-icon ul li {
+  margin-left: 15px;
+}
+.NavSection nav .navbar-icon .phone span {
+  color: #f7b614;
+  font-weight: 700;
+  margin-left: 5px;
+}
+.NavSection nav .navbar-icon .fa-phone {
+  transform: rotate(90deg);
+  -o-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  -moz-transform: rotate(90deg);
+}
+/* end navbar-icon */
+/* end nav  */
+
+/* start menu*/
+menu .details img{
+    width: 250px;
+}
+menu .details h6 {
+  color: #f7b614;
+  font-weight: 800;
+  font-size: 20px;
+}
+menu .card
+{
+  background: #78787817;
+}
+menu .card .Qunt{
+  background-color: white;
+  border-radius: 5x;
+}
+menu .card .addCart{
+  float: right;
+  background-color: #f7b614;
+  color: white;
+  border-radius: 10px;
+}
+menu .card .card-text {
+  text-align: justify;
+}
+menu .menuDetail .card-body h6 {
+  color: #f7b614;
+  position: absolute;
+  font-weight: 800;
+  right: 50px;
+}
+/* card */
+
+.card {
+  border: none;
+  border-radius: 10px
+}
+
+.c-details span {
+  font-weight: 300;
+  font-size: 15px
+}
+
+.card img {
+  width: 50px;
+  height: 50px;
+  background-color: #eee;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 39px
+}
+
+.badge span {
+  background-color: #fffbec;
+  width: 60px;
+  height: 25px;
+  padding-bottom: 3px;
+  border-radius: 5px;
+  display: flex;
+  color: #fed85d;
+  justify-content: center;
+  align-items: center
+}
+
+.progress {
+  height: 10px;
+  border-radius: 10px
+}
+
+.progress div {
+  background-color: red
+}
+
+.text1 {
+  font-size: 14px;
+  font-weight: 600
+}
+
+.text2 {
+  color: #a5aec0
+}
+
+/* mobile reviwe */
+@media (min-width: 320px) and (max-width: 600px) {
+  menu .menuDetail .card-body h6 {
+    position: static;
+  }
+}
