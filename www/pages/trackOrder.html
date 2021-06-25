@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Ordera</title>
+    <!-- css Files -->
+    <link rel="stylesheet" href="../css/map.css" />
+    <script src="../cordova.js"></script>
+  </head>
+
+  <body>
+    <div class="map-cotnainer">
+      <!-- <h1><button onclick="showMarkers()"> show markers</button>
+      <button onclick="clearMarkers()"> hide markers</button>
+      <button onclick="deleteMarkers()"> delete markers</button></h1> -->
+      <h3 id="address"></h3>
+    <div id="map"></div>
+    </div>
+  </body>
+  <script src="../scripts/jquery-3.5.1.min.js"></script>
+  <script src="../scripts/map.js"></script>
+  <script
+    async
+    defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA7nfzqox7HP_crX14tFzVLVpW3r5PnHoI&callback=initMap&language=ar-eg"
+    type="text/javascript"
+  ></script>
+</html>

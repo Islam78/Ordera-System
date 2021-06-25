@@ -32,26 +32,30 @@
         <div class="col-md-3"></div>
         <div class="col-md-6 text-center mt-5">
             <!-- start form -->
-            <form class="form">
+            <form class="form" id="form">
                 <h3>New Account</h3>
-                <input autofocus placeholder="First Name" class="form-control mt-5" type="text" name="" id="first_name">
+                <select name="" class="form-control mt-5" id="type" onchange="TypeChange()">
+                    <option value="" selected hidden>Select Type</option>
+                    <option value="user">User</option>
+                    <option value="Delvary">Delvary</option>
+                </select>
+                <hr>
+                <input autofocus placeholder="First Name" class="form-control " type="text" name="" id="first_name">
                 <input placeholder="Last Name" class="form-control mt-3" type="text" name="" id="last_name">
                 <input placeholder="E-mail" class="form-control mt-3" type="email" name="" id="email">
                 <input placeholder="Passowrd" class="form-control mt-3" type="password" name="" id="password">
                 <input placeholder="Confirm Passowrd" class="form-control mt-3" type="password" name=""
                     id="ConfirmPassowrd">
-                <input placeholder="Location" class="form-control mt-3" type="text" name=""
-                    id="location">
+                <input  class="form-control mt-3" type="location" name="" id="loc">
+
                 <span class="Error" id="passErr"></span>
-                <select name="" class="form-control mt-3" id="type">
-                    <option value="" selected hidden>Select Type</option>
-                    <option value="user">User</option>
-                    <option value="Delvary">Delvary</option>
-                </select>
                 <span class="Error" id="DataErr"></span>
-                <div class="col-3 Login">
+
+                <div class="col-3 Login" id="Register">
+                    <!-- <a href="javascript:void(0)" onclick="registerUser()">
+                        registerUser
+                    </a> -->
                     <!-- <a href=""> -->
-                    <button class="form-control mt-3" type="button" onclick="register()">Create Account</button>
                     <!-- </a> -->
 
                 </div>
