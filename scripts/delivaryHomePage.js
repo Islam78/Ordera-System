@@ -1,6 +1,7 @@
 var Urldelvar = localStorage.getItem('Urldelvar');
 var user = JSON.parse(localStorage.getItem('user'))
-
+if (user) {
+    
 data = ""
 function restorant() {
     var xhr = new XMLHttpRequest();
@@ -169,4 +170,7 @@ function AddCart() {
         xhr.send(data);
 
     }, 400);
+}}
+else{
+    window.location = './../pages/404.html'
 }
