@@ -59,7 +59,7 @@ function GoLocation(delvary_id) {
     xhr.addEventListener("readystatechange", function () {
         if (this.readyState === 4) {
             console.log(this.responseText);
-            window.location = './transHomePageArrive.html'
+            window.location = './rate.html'
         }
     });
     xhr.open("POST", "https://orderasystem.herokuapp.com/user/go_location");
