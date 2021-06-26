@@ -4,7 +4,7 @@ let map;
 let directionsService;
 let directionsRenderer;
 let markers = [];
-let addressToGo = "جامعة مصر";
+let addressToGo = "benha";
 var user_location
 const onSuccess = (position) => {
   directionsService = new google.maps.DirectionsService();
