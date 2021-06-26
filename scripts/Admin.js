@@ -28,7 +28,7 @@ function GetAll() {
                 </tr>
                 `
                 }
-                childData = childData.replace('undefined', '')
+                childData ? childData = childData.replace('undefined', '') : childData = ''
                 document.getElementById('Body').innerHTML = childData
             } else {
                 console.log('failed');

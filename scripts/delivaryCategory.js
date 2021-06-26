@@ -4,9 +4,9 @@ if (user) {
     function bindData() {
         var data = JSON.parse(localStorage.getItem('delivary'))
         if (data) {
-            var ChildData
+            var childData
             for (c of data) {
-                ChildData += `
+                childData += `
                 <div class="col-md-3 col-lg-3 col-sm-3 mt-2" onclick="SetRestaurants(${c.id})">
                     <a href="../pages/delivaryInfo.html" class="card">
                         <img class="img-fluid" src="${c.image}" class="card-img-top" alt="...">
@@ -20,8 +20,8 @@ if (user) {
                 </div>
                 `
             }
-            ChildData = ChildData?.replace('undefined', '')
-            document.getElementById("row").innerHTML = ChildData;
+            childData ? childData = childData.replace('undefined', '') : childData = ''
+            document.getElementById("row").innerHTML = childData;
         }
     } bindData()
 

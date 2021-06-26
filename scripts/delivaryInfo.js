@@ -54,9 +54,7 @@ if (user) {
                     `
                             res.qty = res.qty
                         }
-                        if (subData) {
-                            subData = subData.replace('undefined', '')
-                        }
+                        subData ? subData = subData.replace('undefined', '') : subData = ''
                         document.getElementById('row').innerHTML = subData
                     } else {
                         console.log('failed');

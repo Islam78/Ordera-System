@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
         integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
     <!-- <link rel="stylesheet" href="../css/fontawesome-all.css"> -->
-    <script src="../cordova.js"></script>
+    <!-- <script src="../cordova.js"></script> -->
     <!-- css Files -->
     <link rel="stylesheet" href="../css/map.css" />
 </head>
@@ -77,28 +77,34 @@
             </div>
         </nav>
         <!-- end nav -->
-
         <div class="map">
+            <br><br><br><br>
+            <div class="container search ">
+                <div class="col-md-12">
+                    <div class="d-flex">
+                        <input type="search" class="form-control" placeholder="Search" name="" id="search">
+                        <button class="btn ml-1" onclick="Search()"><i class="fa fa-search"
+                                aria-hidden="true"></i></button>
+                    </div>
+                </div>
+            </div>
             <!-- start feack mape -->
             <div class="row text-center">
+                <!-- <div id=""></div> -->
                 <!-- <h1 style="margin-top: 15%;">Fack Map (Create Mape Here Plzzz ?)</h1> -->
                 <div class="map-cotnainer">
-                    <h3 id="address"></h3>
+                    <!-- <h3 id="address"></h3> -->
                     <div id="map"></div>
                 </div>
                 <div class="mb-3">
-                    <a href="./checkOutTransportation.html" style="float: right;
+                    <a href="./OrderStateTransportaion.html" style="float: right;
                     margin-right: 60px;">
                         <button class="btn btn-info">Confirm</button>
                     </a>
                 </div>
             </div>
-
             <!-- end feack mape -->
-
         </div>
-
-
         <!-- start header  -->
         <header>
             <div class="row">
@@ -111,7 +117,6 @@
                         <p>Nunc pellentesque orci sed tempor pharetra. Morbi molestie purus in interdum facilisis.
                             Mauris
                             commodo mi a egestas sollicitudin. Mauris pharetra placerat sem vel fringilla.</p>
-
                         <ul>
                             <li> <span>1</span> Follow Delivery Status</li>
                             <li> <span>2</span> Follow Delivery Status</li>

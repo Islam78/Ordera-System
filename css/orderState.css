@@ -56,7 +56,7 @@ body {
   border: 1px solid #77777794;
   padding: 24px;
 }
- .details h6 {
+ .details h6 , .Color{
   color: #f7b614;
   font-weight: 800;
   font-size: 20px;

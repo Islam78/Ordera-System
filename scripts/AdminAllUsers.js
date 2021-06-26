@@ -11,9 +11,9 @@ function GetAll() {
                 var data = JSON.parse(this.responseText).result
 
                 if (data) {
-                    var ChildData
+                    var childData
                     for (c of data) {
-                        ChildData += `
+                        childData += `
                     <tr>
                     <td>${c.delvary_id}</td>
                     <td>${c.First_name} ${c.last_name}</td>
@@ -25,9 +25,9 @@ function GetAll() {
                 </tr>
                         `
                     }
-                    ChildData = ChildData?.replace('undefined', '')
+                    childData ? childData = childData.replace('undefined', '') : childData = ''
                     console.log(data);
-                    document.getElementById("body").innerHTML = ChildData;
+                    document.getElementById("body").innerHTML = childData;
                 }
             } else {
                 console.log('failed');

@@ -77,9 +77,9 @@ function GetQuick() {
         if (this.readyState === 4) {
             if (this.status === 200) {
                 data = JSON.parse(this.responseText).result
-                var ChildData
+                var childData
                 for (child of data) {
-                    ChildData += `
+                    childData += `
                     <div class="col-lg-3 col-md-6 col-sm-6 col-ms-12 col-xs-12">
                         <div class="content text-center">
                             <img src="${child.image}" alt="">
@@ -91,8 +91,8 @@ function GetQuick() {
                     </div>
                     `
                 }
-                ChildData = ChildData.replace('undefined', '')
-                document.getElementById('row').innerHTML = ChildData
+                childData ? childData = childData.replace('undefined', '') : childData = ''
+                document.getElementById('row').innerHTML = childData
                 console.log('successful');
             } else {
                 console.log('failed');
