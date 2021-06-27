@@ -9,7 +9,6 @@ function GetAll() {
             if (this.status === 200) {
                 console.log('successful');
                 var data = JSON.parse(this.responseText).result
-
                 if (data) {
                     var childData
                     for (c of data) {
@@ -22,7 +21,7 @@ function GetAll() {
                     <td>
                         <button class="btn btn-danger" onclick="DeleteUser(${c.delvary_id})">Delete</button>
                     </td>
-                </tr>
+                    </tr>
                         `
                     }
                     childData ? childData = childData.replace('undefined', '') : childData = ''
@@ -44,22 +43,22 @@ function GetAll() {
 function DeleteUser(id) {
     var data = JSON.stringify({
         "id": `${id}`
-      });
-      console.log(data);
-      var xhr = new XMLHttpRequest();
-      xhr.withCredentials = true;
-      
-      xhr.addEventListener("readystatechange", function() {
-        if(this.readyState === 4) {
-          console.log(this.responseText);
-          if (this.status === 200) {
-            GetAll()
-          }
+    });
+    console.log(data);
+    var xhr = new XMLHttpRequest();
+    xhr.withCredentials = true;
+
+    xhr.addEventListener("readystatechange", function () {
+        if (this.readyState === 4) {
+            console.log(this.responseText);
+            if (this.status === 200) {
+                GetAll()
+            }
         }
-      });
-      
-      xhr.open("POST", "https://orderasystem.herokuapp.com/admin/delete_delvary");
-      xhr.setRequestHeader("Content-Type", "application/json");
-      
-      xhr.send(data);
+    });
+
+    xhr.open("POST", "https://orderasystem.herokuapp.com/admin/delete_delvary");
+    xhr.setRequestHeader("Content-Type", "application/json");
+
+    xhr.send(data);
 }

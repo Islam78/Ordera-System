@@ -3,8 +3,6 @@ if (user.user) {
   setTimeout(() => {
     const addressForUserGo = { lat: 30, lng: 30 };
     const MAP_READY_INTERVAL = setInterval(() => {
-      console.log(GlobalLatlng);
-
       // if (GlobalLatlng.lat) {
       //   // map functionallity is ready
       //   clearInterval(MAP_READY_INTERVAL);

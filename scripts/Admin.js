@@ -1,6 +1,5 @@
 function GetAll() {
     var data = "";
-
     var xhr = new XMLHttpRequest();
     xhr.withCredentials = true;
     xhr.addEventListener("readystatechange", function () {
@@ -40,7 +39,7 @@ function GetAll() {
 
     xhr.send(data);
 
-}GetAll()
+} GetAll()
 function Action(id, type) {
     console.log(id, type);
     var data =

@@ -26,7 +26,7 @@ const onSuccess = (position) => {
   addMyLocationBtn();
 
   // ================================================== Examples ========================================================
-  
+
   showUserLocationInMap(latlng);
   // putMarkerOnMap(getCaptainLocation());
   // putCaptainsMarkers(latlng);
@@ -59,12 +59,12 @@ function initMap() {
 
 // get captain location
 const getCaptainLocation = () =>
-  // dummy data
-  // TODO: use end point for captain location here
-  ({
-    lat: 29.97488078065076,
-    lng: 30.945482580418446,
-  });
+// dummy data
+// TODO: use end point for captain location here
+({
+  lat: 29.97488078065076,
+  lng: 30.945482580418446,
+});
 
 // show user location
 const showUserLocationInMap = (position) => putMarkerOnMap(position);

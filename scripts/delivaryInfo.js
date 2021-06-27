@@ -12,46 +12,45 @@ if (user.user) {
                     if (this.status === 200) {
                         var headDetail = JSON.parse(this.responseText).result[0]
                         document.getElementById('head').innerHTML = `
-                <img src="${headDetail.image}" class="headImage"  id="InfoImg">
-                <h2 class="" id="InfoTitle">${headDetail.name}</h2>
-                <h6 class="" id="InfoDescription">${headDetail.description}</h6>
-                `
+                            <img src="${headDetail.image}" class="headImage"  id="InfoImg">
+                            <h2 class="" id="InfoTitle">${headDetail.name}</h2>
+                            <h6 class="" id="InfoDescription">${headDetail.description}</h6>
+                            `
                         localStorage.setItem('headDetail', JSON.stringify(headDetail))
-
                         result = JSON.parse(this.responseText).menu
                         var subData
                         for (res of result) {
                             res.qty = 0
                             // res.description.slice(0,10)
                             subData += `
-                            <div class="card col-md-4 mt-1"> 
-                                <div class="image">
-                                    <img src="${res.image}">
-                                </div>
-                                <div class="card-body pt-0 px-0 ">
-                                    <div class="d-flex flex-row justify-content-between mb-0 px-3">
-                                    <p class="text-muted mt-1 Itemname">${res.name}</p>
-                                        <h6>${res.price} EGP</h6>
-                                    </div>
-                                    <hr class="mt-2 mx-3">
-                                    <div class="d-flex flex-row justify-content-between px-3 pb-4">
-                                        <div class="d-flex">
-                                            <span class="description mr-auto">${res.description.slice(0, 40)}..</span>
-                                            <div class="action">
-                                                <button class="btn Qunt" id="plus" onclick="plus(${res.item_id})">+</button>
-                                                <button class="btn" #qty id="qunt${res.item_id}" value="${res.qty}">
-                                                    ${res.qty}
-                                                </button>
-                                                <button class="btn Qunt" id="minus" onclick="minus(${res.item_id})">-</button>
+                                        <div class="card col-md-4 mt-1"> 
+                                            <div class="image">
+                                                <img src="${res.image}">
                                             </div>
-                                        </div>                            
-                                    </div>                     
-                                    <div class="mx-3 mt-3 mb-2">
-                                    <button onclick="getItemDetails(${res.item_id});AddCart()" type="button" class="btn btn-danger btn-block">
-                                    <small >Add To Cart</small></button></div> 
-                                </div>
-                            </div>
-                    `
+                                            <div class="card-body pt-0 px-0 ">
+                                                <div class="d-flex flex-row justify-content-between mb-0 px-3">
+                                                <p class="text-muted mt-1 Itemname">${res.name}</p>
+                                                    <h6>${res.price} EGP</h6>
+                                                </div>
+                                                <hr class="mt-2 mx-3">
+                                                <div class="d-flex flex-row justify-content-between px-3 pb-4">
+                                                    <div class="d-flex">
+                                                        <span class="description mr-auto">${res.description.slice(0, 40)}..</span>
+                                                        <div class="action">
+                                                            <button class="btn Qunt" id="plus" onclick="plus(${res.item_id})">+</button>
+                                                            <button class="btn" #qty id="qunt${res.item_id}" value="${res.qty}">
+                                                                ${res.qty}
+                                                            </button>
+                                                            <button class="btn Qunt" id="minus" onclick="minus(${res.item_id})">-</button>
+                                                        </div>
+                                                    </div>                            
+                                                </div>                     
+                                                <div class="mx-3 mt-3 mb-2">
+                                                <button onclick="getItemDetails(${res.item_id});AddCart()" type="button" class="btn btn-danger btn-block">
+                                                <small >Add To Cart</small></button></div> 
+                                            </div>
+                                        </div>
+                                `
                             res.qty = res.qty
                         }
                         subData ? subData = subData.replace('undefined', '') : subData = ''
@@ -63,10 +62,12 @@ if (user.user) {
 
             }
         });
+
         xhr.open("POST", `https://orderasystem.herokuapp.com/delvary/${Urldelvar}`);
         xhr.setRequestHeader("Content-Type", "application/json");
         xhr.send(ResId);
     } getAll()
+
     function plus(id) {
         let Element = document.getElementById(`qunt${id}`).value
         Element = Element * 1
@@ -76,6 +77,7 @@ if (user.user) {
         document.getElementById(`qunt${id}`).innerHTML = Element
         localStorage.setItem('qty', JSON.stringify({ item_id: id, qty: Element }))
     }
+
     function minus(id) {
         let Element = document.getElementById(`qunt${id}`).value
         Element = Element * 1
@@ -86,6 +88,7 @@ if (user.user) {
         document.getElementById(`qunt${id}`).innerHTML = Element
         localStorage.setItem('qty', JSON.stringify({ item_id: id, qty: Element }))
     }
+
     var ItemData
     function getItemDetails(item_id) {
         var data = JSON.stringify({
@@ -103,6 +106,7 @@ if (user.user) {
         xhr.setRequestHeader("Content-Type", "application/json");
         xhr.send(data);
     }
+
     function AddCart() {
         let headers = JSON.parse(localStorage.getItem('headDetail'))
         setTimeout(() => {
@@ -129,7 +133,6 @@ if (user.user) {
 
         }, 300);
     }
-}
-else {
+} else {
     window.location = './../pages/404.html'
 }

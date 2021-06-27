@@ -16,7 +16,7 @@ function Login() {
                 if (res.delvary) {
                     console.log('delvary');
                     window.location.href = './Captin.html'
-                }else {
+                } else {
                     window.location.href = './selectType.html'
                     console.log('user');
                 }

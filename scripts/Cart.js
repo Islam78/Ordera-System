@@ -18,7 +18,7 @@ if (user.user) {
                         res.qty = 0
                         // res.description.slice(0,10)
                         subData += `
-                  <div class="row border-top border-bottom">
+                <div class="row border-top border-bottom">
                   <div class="row main align-items-center">
                       <div class="col-2">
                           <img class="img-fluid" src="${res.image}"></div>
@@ -30,8 +30,8 @@ if (user.user) {
                       <div class="col">${res.price} EGP 
                         <span class="close" type="button" onclick="Remove(${res.user_id})" >&#10005;</span>
                       </div>
-                  </div>
-              </div>
+                    </div>
+                </div>
               `
                     }
                     subData ? subData = subData.replace('undefined', '') : ''
@@ -65,11 +65,10 @@ if (user.user) {
                 getCart()
             }
         });
+        xhr.open("POST", "https://orderasystem.herokuapp.com/cart/delete_carts");
+        xhr.setRequestHeader("Content-Type", "application/json");
 
-        // xhr.open("POST", "https://orderasystem.herokuapp.com/cart/delete_carts");
-        // xhr.setRequestHeader("Content-Type", "application/json");
-
-        // xhr.send(data);
+        xhr.send(data);
     }
 }
 else {

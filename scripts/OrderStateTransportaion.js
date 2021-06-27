@@ -66,7 +66,4 @@ function GoLocation(delvary_id) {
     xhr.setRequestHeader("Content-Type", "application/json");
 
     xhr.send(data);
-
-    // href="./transHomePage.html"
-
 }

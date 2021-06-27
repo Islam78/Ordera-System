@@ -4,9 +4,8 @@ function TypeChange() {
     if (element == 'user') {
         document.getElementById("Register").innerHTML = `
         <button class="form-control mt-3" type="button" onclick="registerUser()">Create Account</button>
-        `
+       `
         document.getElementById('loc').setAttribute('placeholder', 'location')
-        // document.getElementById('form').innerHTML =
     } else if (element == 'Delvary') {
         document.getElementById("Register").innerHTML = `
         <button class="form-control mt-3" type="button" onclick="registerDelivary()">Create Account</button>
@@ -67,7 +66,6 @@ function registerUser() {
         document.getElementById('DataErr').innerHTML = 'Invalid Data'
 
     }
-    // api
     var xhr = new XMLHttpRequest();
     xhr.withCredentials = true;
 
@@ -91,7 +89,6 @@ function registerUser() {
 
     xhr.send(JSON.stringify(RegisterForm));
 }
-
 
 function registerDelivary() {
     var first_name = document.getElementById('first_name').value;
@@ -144,7 +141,6 @@ function registerDelivary() {
         document.getElementById('DataErr').innerHTML = 'Invalid Data'
 
     }
-    // api
     var xhr = new XMLHttpRequest();
     xhr.withCredentials = true;
 
@@ -161,10 +157,7 @@ function registerDelivary() {
             }
         }
     });
-
     xhr.open("POST", "https://orderasystem.herokuapp.com/register/signupdelvary");
-
     xhr.setRequestHeader("Content-Type", "application/json");
-
     xhr.send(JSON.stringify(RegisterForm));
 }

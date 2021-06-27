@@ -30,8 +30,8 @@ if (user.user) {
         localStorage.setItem('ResId', JSON.stringify({
             "id": a
         }))
-
     }
+
     function Search() {
         page = localStorage.getItem('Urldelvar')
 
@@ -71,6 +71,6 @@ if (user.user) {
         xhr.send(data);
     }
 }
-else{
+else {
     window.location = './../pages/404.html'
 }

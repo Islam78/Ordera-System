@@ -1,7 +1,5 @@
 var user = JSON.parse(localStorage.getItem('user'))
 if (user.user) {
-
-
     // when search input change 
     document.getElementById("search").addEventListener("input", (e) => {
         // console.log(e.target.value);
@@ -59,7 +57,6 @@ if (user.user) {
             console.log("search value is empty");
         }
     }
-
     function GoLocation() {
         console.log('GoLocation function');
         document.getElementById('recommend').style.display = 'none'

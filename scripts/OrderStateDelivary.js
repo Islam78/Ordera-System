@@ -44,6 +44,7 @@ if (user.user) {
     window.location = './../pages/404.html'
 }
 
+
 function GoLocation(delvary_id) {
     var GoLocation = JSON.parse(localStorage.getItem('GoLocation'))
     var UserLocation = JSON.parse(localStorage.getItem('UserLocation'))
@@ -66,7 +67,4 @@ function GoLocation(delvary_id) {
     xhr.setRequestHeader("Content-Type", "application/json");
 
     xhr.send(data);
-
-    // href="./transHomePage.html"
-
 }

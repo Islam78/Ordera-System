@@ -1,11 +1,9 @@
 var user = JSON.parse(localStorage.getItem('user'))
 if (user.user) {
-
     // when search input change 
     document.getElementById("search").addEventListener("input", (e) => {
         //   console.log(e.target.value);
     });
-
     function Search() {
         let searchValue = document.getElementById("search").value;
         if (searchValue) {
@@ -44,8 +42,6 @@ if (user.user) {
             console.log("search value is empty");
         }
     }
-
-    // console.log(removeArabicLettersFromText("جامعة مصر go"));
     document.addEventListener("DOMContentLoaded", (event) => {
         const MAP_READY_INTERVAL = setInterval(() => {
             if (GlobalLatlng.lat) {

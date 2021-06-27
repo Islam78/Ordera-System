@@ -49,7 +49,6 @@ function Accept() {
     var data = JSON.stringify({
         "delvary_id": user.delvary
     });
-    // href="./AcceptTran.html"
     var xhr = new XMLHttpRequest();
     xhr.withCredentials = true;
 
