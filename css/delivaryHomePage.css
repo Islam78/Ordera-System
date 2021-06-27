@@ -311,26 +311,31 @@ header .app img {
   }
 }
 
-.recomment{
+.recomment {
   border: 1px solid #999;
   border-radius: 5px;
   padding: 5px;
   margin-top: 5px;
   position: absolute;
-  width: 80%;
-  z-index: 1;
+  width: 85%;
+    z-index: 1;
   background: white;
   padding-bottom: 0;
   display: none;
-
 }
-.recomment .child{
+.recomment .child {
   color: #282932;
   display: block;
-  border-bottom: 1px solid #999;
+  /* border-bottom: 1px solid #999; */
   font-size: 20px;
 }
 
-  .recomment .child:hover{
-    background: #e3e3e3;
-    border-radius: 5px;  }
+.recomment .child:hover {
+  background: #e3e3e3;
+  border-radius: 5px;
+}
+.res {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}

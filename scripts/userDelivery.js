@@ -42,6 +42,7 @@ if (user.user) {
                             for (res of results) {
                                 child += `
                             <span class="child" type="button" onclick="GoLocation()">${res.name}</span> 
+                           
                             `
                             }
                             child ? child = child.replace('undefined', '') : ''
