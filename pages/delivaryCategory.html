@@ -16,9 +16,7 @@
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
         integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
     <!-- <link rel="stylesheet" href="../root/css/fontawesome-all.css"> -->
-
 </head>
-
 <body>
     <!-- start navbar  -->
     <div class="NavSection">
@@ -71,7 +69,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-light" href="../index.html">
+                            <a class="nav-link text-light"  onclick="logout()">
                                 Logout
                             </a>
                         </li>
@@ -82,33 +80,22 @@
         <!-- end nav -->
     </div>
     <!-- end header -->
-
     <!-- start conteiner -->
     <div class="category">
         <div class="container text-center mt-4">
             <h2>Order online for delivery in Egypt</h2>
-            
             <div class="row mt-3">
-                <!-- <div class="col-3"></div> -->
                 <div class="col-12">
                     <div class="d-flex">
                         <input type="search" class="form-control" placeholder="Search" name="" id="search">
-                        <button class="btn ml-1" onclick="Search()"><i class="fa fa-search" aria-hidden="true"></i></button>
+                        <button class="btn ml-1" onclick="Search()"><i class="fa fa-search"
+                                aria-hidden="true"></i></button>
 
                     </div>
                 </div>
-                <!-- <div class="col-3"></div> -->
             </div>
-            
+
             <div class="row" id="row">
-                <!-- <div class="col-md-3 col-lg-3 col-sm-3 mt-2" id="col">
-                    <a href="../pages/delivaryInfo.html" class="card">
-                        <img class="img-fluid" src="../images/resturant.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <p class="card-text">Some quick example text to build on the card title and make up.</p>
-                        </div>
-                    </a>
-                </div> -->
             </div>
         </div>
     </div>
@@ -129,6 +116,8 @@
     <!-- my Project Files -->
     <script src="../scripts/delivaryCategory.js"></script>
     <!-- <script src="../scripts/delivaryHomePage.js"></script> -->
+    <script src="../scripts/logout.js"></script>
+
 </body>
 
 </html>

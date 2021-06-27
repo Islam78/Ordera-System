@@ -15,9 +15,6 @@
     <!-- fontawesome -->
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
         integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
-    <!-- <link rel="stylesheet" href="../css/fontawesome-all.css"> -->
-    <!-- <script src="../cordova.js"></script> -->
-    <!-- css Files -->
     <link rel="stylesheet" href="../css/map.css" />
 </head>
 
@@ -68,7 +65,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-light" href="../index.html">
+                            <a class="nav-link text-light"  onclick="logout()">
                                 Logout
                             </a>
                         </li>
@@ -82,18 +79,18 @@
             <div class="container search ">
                 <div class="col-md-12">
                     <div class="d-flex">
-                        <input type="search" class="form-control" placeholder="Search" name="" id="search">
-                        <button class="btn ml-1" onclick="Search()"><i class="fa fa-search"
-                                aria-hidden="true"></i></button>
+                        <input type="search" class="form-control" placeholder="Search" name="" id="search"
+                            onkeydown="Search()" />
+                        <button class="btn ml-1">
+                            <i class="fa fa-search" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                    <div class="recomment" id="recommend">
                     </div>
                 </div>
             </div>
-            <!-- start feack mape -->
             <div class="row text-center">
-                <!-- <div id=""></div> -->
-                <!-- <h1 style="margin-top: 15%;">Fack Map (Create Mape Here Plzzz ?)</h1> -->
                 <div class="map-cotnainer">
-                    <!-- <h3 id="address"></h3> -->
                     <div id="map"></div>
                 </div>
                 <div class="mb-3">
@@ -103,7 +100,6 @@
                     </a>
                 </div>
             </div>
-            <!-- end feack mape -->
         </div>
         <!-- start header  -->
         <header>
@@ -142,9 +138,7 @@
             </div>
         </header>
         <!-- start headers  -->
-
         <!-- *********************************************likes************************************************ -->
-        <!-- bootstrap  -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
             crossorigin="anonymous"></script>
@@ -157,12 +151,13 @@
         <!-- fontawesome -->
         <script src="../scripts/fontawesome-all.js"></script>
         <!-- my Project Files -->
-        <script src="../scripts/app.js"></script>
         <script src="../scripts/jquery-3.5.1.min.js"></script>
         <script src="../scripts/map.js"></script>
         <script async defer
-            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA7nfzqox7HP_crX14tFzVLVpW3r5PnHoI&callback=initMap&language=ar-eg"
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA7nfzqox7HP_crX14tFzVLVpW3r5PnHoI&callback=initMap&libraries=places"
             type="text/javascript"></script>
+        <script src="../scripts/userDelivery.js"></script>
+        <script src="../scripts/logout.js"></script>
 
 </body>
 

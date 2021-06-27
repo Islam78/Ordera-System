@@ -73,7 +73,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-light" href="../index.html">
+                            <a class="nav-link text-light"  onclick="logout()">
                                 Logout
                             </a>
                         </li>
@@ -164,26 +164,8 @@
     <script src="../scripts/fontawesome-all.js"></script>
     <!-- my Project Files -->
     <script src="../scripts/Admin.js"></script>
-    <script>
+    <script src="../scripts/logout.js"></script>
 
-        var xhr = new XMLHttpRequest();
-        xhr.withCredentials = true;
-
-        xhr.addEventListener("readystatechange", function () {
-            if (this.readyState === 4) {
-                console.log(this.responseText);
-            }
-        });
-
-        xhr.open("POST", "https://jsonplaceholder.typicode.com/posts");
-
-        xhr.setRequestHeader("khayal1Token", "khayal123");
-        xhr.setRequestHeader("token", "c77b6074ba91f7a77e03dd46e9eea9bad26da99ffc5da4a39c9be84a86525fcc");
-
-        xhr.send();
-
-
-    </script>
 </body>
 
 </html>

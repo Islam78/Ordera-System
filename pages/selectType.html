@@ -21,55 +21,11 @@
 <body>
     <!-- start back -->
     <div class="nav">
-        <a href="../index.html">
+        <a onclick="logout()" href="javascript:void(0)">
             <i class="icon fas fa-arrow-left"></i>
         </a>
     </div>
     <!-- end back -->
-
-    <!-- start pop up -->
-    <button type="button" id="openModal" hidden data-toggle="modal" data-target="#exampleModalCenter">
-        sssssssssssssssssssss
-    </button>
-
-    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
-        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">Location</h5>
-                </div>
-                <div class="modal-body">
-                    <!-- <button class="btn btn-info text-center" onclick="getLocatio()">Allow Location</button> -->
-                    <!-- <p id="location"></p> -->
-                    <input type="search" name="location" class="form-control" placeholder="What's Your location" id="">
-                    <div class="returnedlocation">
-                        <ul class="list-group mt-1">
-                            <li class="list-group-item">cairo</li>
-                            <li class="list-group-item">6'octoper</li>
-                            <li class="list-group-item">Morbi leo risus</li>
-                            <li class="list-group-item">Porta ac consectetur ac</li>
-                            <li class="list-group-item">Vestibulum at eros</li>
-                        </ul>
-                    </div>
-                    <div class="mt-5">
-                        <select class="form-control" name="" id="">
-                            <option value="" selected hidden>اختر الفرع</option>
-                            <option value="">حصري</option>
-                            <option value="">مدرسة كذا كذا</option>
-                            <option value="">اي حاجة </option>
-                        </select>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" id="close" class="btn btn-primary" onclick="ShowMenu()"
-                        data-dismiss="modal">Allow</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- end pop up -->
-
     <!-- select -->
     <div class="row ml-1 mr-1" id="Select">
         <div class="col-md-3"></div>
@@ -107,25 +63,8 @@
     <script src="../scripts/fontawesome-all.js"></script>
     <!-- my Project Files -->
     <script src="../scripts/selectType.js"></script>
-    <script>
-        // document.getElementById('openModal').click()
-        // function ShowMenu() {
-        //     document.getElementById('Select').style.display = 'flex'
-        // }
-        // var x = document.getElementById('location')
-        // function getLocatio() {
-        //     if (navigator.geolocation) {
-
-        //         navigator.geolocation.getCurrentPosition(showPosition);
-        //     } else {
-        //         x.innerHTML = "Geolocation is not supported by this browser.";
-        //     }
-        // }
-        // function showPosition(position) {
-        //     x.innerHTML = "Latitude: " + position.coords.latitude +
-        //         "<br>Longitude: " + position.coords.longitude;
-        // }
-    </script>
+    <script src="../scripts/logout.js"></script>
+    
 </body>
 
 </html>

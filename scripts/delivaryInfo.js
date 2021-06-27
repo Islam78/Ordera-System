@@ -1,7 +1,7 @@
 var ResId = localStorage.getItem('ResId');
 var Urldelvar = localStorage.getItem('Urldelvar');
 var user = JSON.parse(localStorage.getItem('user'))
-if (user) {
+if (user.user) {
     function getAll() {
         var xhr = new XMLHttpRequest();
         xhr.withCredentials = true;

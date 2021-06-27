@@ -1,6 +1,6 @@
 user = JSON.parse(localStorage.getItem('user'))
 console.log(user);
-if (user) {
+if (user.delvary) {
     function getOrder() {
         var data = JSON.stringify({
             "delvary_id": user.delvary

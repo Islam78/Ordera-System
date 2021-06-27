@@ -1,5 +1,5 @@
 var user = JSON.parse(localStorage.getItem('user'))
-if (user) {
+if (user.user) {
 
     function bindData() {
         var data = JSON.parse(localStorage.getItem('delivary'))

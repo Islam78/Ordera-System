@@ -1,5 +1,5 @@
 user = JSON.parse(localStorage.getItem('user'))
-if (user) {
+if (user.user) {
     scoter = JSON.parse(localStorage.getItem('delivaryDetail'))
     document.getElementById('scoter').innerHTML = `
         <img src="../images/scoter.jpg" alt="">

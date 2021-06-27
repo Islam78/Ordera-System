@@ -15,12 +15,9 @@
     <!-- fontawesome -->
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
         integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
-    <!-- <link rel="stylesheet" href="../css/fontawesome-all.css"> -->
-
 </head>
 
 <body>
-
     <!-- start navbar  -->
     <div class="NavSection">
         <!-- start nav -->
@@ -72,7 +69,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-light" href="../index.html">
+                            <a class="nav-link text-light"  onclick="logout()">
                                 Logout
                             </a>
                         </li>
@@ -86,38 +83,17 @@
     <!-- start menu -->
     <div class=" text-center">
         <div class="details mb-3 mt-3" id="head">
-
         </div>
         <div class="container">
             <hr>
-
             <div class="row" id="row">
-                <!-- <div class="col-sm-4">
-                        <div class="card"> <img src="../images/food.jpg" class="card-img-top" width="100%">
-                            <div class="card-body pt-0 px-0">
-                                <div class="d-flex flex-row justify-content-between mb-0 px-3"> <small class="text-muted mt-1">STARTING AT</small>
-                                    <h6>&dollar;22,495&ast;</h6>
-                                </div>
-                                <hr class="mt-2 mx-3">
-                                <div class="d-flex flex-row justify-content-between px-3 pb-4">
-                                    <div class="d-flex flex-column"><span class="text-muted">Fuel Efficiency</span><small class="text-muted">L/100KM&ast;</small></div>
-                                    <div class="d-flex flex-column">
-                                        <h5 class="mb-0">8.5/7.1</h5><small class="text-muted text-right">(city/Hwy)</small>
-                                    </div>
-                                </div>
-                               <small class="text-muted key pl-3">Standard key Features</small>
-                                <div class="mx-3 mt-3 mb-2"><button type="button" class="btn btn-danger btn-block"><small>BUILD & PRICE</small></button></div> <small class="d-flex justify-content-center text-muted">*Legal Disclaimer</small>
-                            </div>
-                        </div>
-                    </div> -->
+
             </div>
         </div>
     </div>
     </div>
     <!-- </menu> -->
     <!-- end menu -->
-
-
     <!-- *********************************************likes************************************************ -->
     <!-- bootstrap  -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
@@ -130,148 +106,8 @@
     <script src="../scripts/fontawesome-all.js"></script>
     <!-- my Project Files -->
     <script src="../scripts/delivaryInfo.js"></script>
+    <script src="../scripts/logout.js"></script>
 
 </body>
 
 </html>
-
-
-
-
-<!-- start menu 
-    <menu >
-        <div class="container text-center">
-            <div class="details mb-3">
-                <img src="../images/mac.jpg" alt="">
-                <h2 class="">ماكدونالز</h2>
-                <h6 class="">برجر , وجبات سريعه , فطار</h6>
-            </div>
-            <div class="menuDetail text-center" id="accordion">
-                <div class="card">
-                    <div class="card-header" id="headingOne">
-                        <h5 class="mb-0">
-                            <button class="btn " data-toggle="collapse" data-target="#collapseOne" aria-expanded="true"
-                                aria-controls="collapseOne">
-                                special offers
-                            </button>
-                        </h5>
-                    </div>
-                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
-                        <div class="card-body">
-                            <ul class="list-group">
-                                <li class="list-group-item d-flex justify-content-between align-items-center">
-                                    <img src="../images/food.jpg" alt="">
-                                    <p>مكس 2 وجبة متوسطة</p>
-                                    <h6>ج.م 56.00</h6>
-                                    <span class="badge badge-pill" type="button">
-                                        <i class="fas fa-plus"></i>
-                                    </span>
-                                </li>
-                                <li class="list-group-item d-flex justify-content-between align-items-center">
-                                    <img src="../images/food.jpg" alt="">
-                                    <p>مكس 2 وجبة متوسطة</p>
-                                    <h6>ج.م 56.00</h6>
-                                    <span class="badge badge-pill" type="button">
-                                        <i class="fas fa-plus"></i>
-                                    </span>
-                                </li>
-                                <li class="list-group-item d-flex justify-content-between align-items-center">
-                                    <img src="../images/food.jpg" alt="">
-                                    <p>مكس 2 وجبة متوسطة</p>
-                                    <h6>ج.م 56.00</h6>
-                                    <span class="badge badge-pill" type="button">
-                                        <i class="fas fa-plus"></i>
-                                    </span>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-header" id="headingTwo">
-                        <h5 class="mb-0">
-                            <button class="btn  collapsed" data-toggle="collapse" data-target="#collapseTwo"
-                                aria-expanded="false" aria-controls="collapseTwo">
-                                Meat
-                            </button>
-                        </h5>
-                    </div>
-                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
-                        <div class="card-body">
-                            <li class="list-group-item d-flex justify-content-between align-items-center">
-                                <img src="../images/food.jpg" alt="">
-                                <p>مكس 2 وجبة متوسطة</p>
-                                <h6>ج.م 56.00</h6>
-                                <span class="badge badge-pill" type="button">
-                                    <i class="fas fa-plus"></i>
-                                </span>
-                            </li>
-                            <li class="list-group-item d-flex justify-content-between align-items-center">
-                                <img src="../images/food.jpg" alt="">
-                                <p>مكس 2 وجبة متوسطة</p>
-                                <h6>ج.م 56.00</h6>
-                                <span class="badge badge-pill" type="button">
-                                    <i class="fas fa-plus"></i>
-                                </span>
-                            </li>
-                            <li class="list-group-item d-flex justify-content-between align-items-center">
-                                <img src="../images/food.jpg" alt="">
-                                <p>مكس 2 وجبة متوسطة</p>
-                                <h6>ج.م 56.00</h6>
-                                <span class="badge badge-pill" type="button">
-                                    <i class="fas fa-plus"></i>
-                                </span>
-                            </li>
-                            <li class="list-group-item d-flex justify-content-between align-items-center">
-                                <img src="../images/food.jpg" alt="">
-                                <p>مكس 2 وجبة متوسطة</p>
-                                <h6>ج.م 56.00</h6>
-                                <span class="badge badge-pill" type="button">
-                                    <i class="fas fa-plus"></i>
-                                </span>
-                            </li>
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-header" id="headingThree">
-                        <h5 class="mb-0">
-                            <button class="btn  collapsed" data-toggle="collapse" data-target="#collapseThree"
-                                aria-expanded="false" aria-controls="collapseThree">
-                                Chicken
-                            </button>
-                        </h5>
-                    </div>
-                    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
-                        <div class="card-body">
-                            <li class="list-group-item d-flex justify-content-between align-items-center">
-                                <img src="../images/food.jpg" alt="">
-                                <p>مكس 2 وجبة متوسطة</p>
-                                <h6>ج.م 56.00</h6>
-                                <span class="badge badge-pill" type="button">
-                                    <i class="fas fa-plus"></i>
-                                </span>
-                            </li>
-                            <li class="list-group-item d-flex justify-content-between align-items-center">
-                                <img src="../images/food.jpg" alt="">
-                                <p>مكس 2 وجبة متوسطة</p>
-                                <h6>ج.م 56.00</h6>
-                                <span class="badge badge-pill" type="button">
-                                    <i class="fas fa-plus"></i>
-                                </span>
-                            </li>
-                            <li class="list-group-item d-flex justify-content-between align-items-center">
-                                <img src="../images/food.jpg" alt="">
-                                <p>مكس 2 وجبة متوسطة</p>
-                                <h6>ج.م 56.00</h6>
-                                <span class="badge badge-pill" type="button">
-                                    <i class="fas fa-plus"></i>
-                                </span>
-                            </li>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </menu>
-    end menu -->

@@ -1,6 +1,6 @@
 var Urldelvar = localStorage.getItem('Urldelvar');
 var user = JSON.parse(localStorage.getItem('user'))
-if (user) {
+if (user.user) {
     
 data = ""
 function restorant() {

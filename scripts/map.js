@@ -4,8 +4,10 @@ let map;
 let directionsService;
 let directionsRenderer;
 let markers = [];
-let addressToGo = "benha";
-var user_location
+let addressToGo = "جامعة مصر";
+let GlobalLatlng = {};
+const ARABIC_PATTERN = /[أ-ي]/;
+
 const onSuccess = (position) => {
   directionsService = new google.maps.DirectionsService();
   directionsRenderer = new google.maps.DirectionsRenderer();
@@ -14,62 +16,18 @@ const onSuccess = (position) => {
     lat: position.coords.latitude,
     lng: position.coords.longitude,
   };
+  GlobalLatlng = latlng;
   map = new google.maps.Map(document.getElementById("map"), {
     center: latlng,
     zoom: 16,
   });
   directionsRenderer.setMap(map);
+
   addMyLocationBtn();
+
   // ================================================== Examples ========================================================
-  // dummy data from => captain location. to =>user location
-  getUserAddress(latlng).then((data) => {
-    console.log(data);
-    if (data.status === "OK") {
-      const address = data.results[0];
-      
-      console.log('address', address);
-      // TODO: display full address data in input
-      // document.getElementById(
-      //   "address"
-      // ).innerHTML = `${address.formatted_address}`;
-      return displayRoute({
-        from: getCaptainLocation(),
-        to: address.geometry.location,
-      });
-    }
-    console.log(data.status);
-  });
-
-  // dummy place
-
-  searchByPlace(addressToGo).then((data) => {
-    console.log(data);
-    if (data.status === "OK") {
-      if (data.candidates.length > 0) {
-        console.log(data.candidates[0]);
-        localStorage.setItem('GoLocation', JSON.stringify(data.candidates[0].formatted_address))
-        localStorage.setItem('UserLocation', JSON.stringify(data.candidates[0].formatted_address))
-        user_location = data.candidates[0].formatted_address
-
-        const firstElement = data.candidates[0];
-        getTimeBetweenTwoPoints(latlng, firstElement.geometry.location).then(
-          (data) => {
-            console.log(data.origin_addresses[0]);
-            console.log(data.rows[0].elements[0]);
-            return displayRoute({
-              from: latlng,
-              to: firstElement.geometry.location,
-            });
-          }
-        );
-      } else {
-        console.log("No places. Try another name.");
-      }
-    }
-  });
-
-  // getUserAddress(latlng, displayRoute);
-  // showUserLocationInMap(latlng);
+  
+  showUserLocationInMap(latlng);
   // putMarkerOnMap(getCaptainLocation());
   // putCaptainsMarkers(latlng);
   // putCaptainsMarkers({
@@ -91,11 +49,7 @@ const onSuccess = (position) => {
 
   // ================================================== End Examples ========================================================
 };
-function Search() {
-  var elemnt = document.getElementById('search').value
-  console.log(elemnt);
 
-}
 const onError = (error) =>
   alert("code: " + error.code + "\n" + "message: " + error.message + "\n");
 
@@ -105,12 +59,12 @@ function initMap() {
 
 // get captain location
 const getCaptainLocation = () =>
-// dummy data
-// TODO: use end point for captain location here
-({
-  lat: 29.97488078065076,
-  lng: 30.945482580418446,
-});
+  // dummy data
+  // TODO: use end point for captain location here
+  ({
+    lat: 29.97488078065076,
+    lng: 30.945482580418446,
+  });
 
 // show user location
 const showUserLocationInMap = (position) => putMarkerOnMap(position);
@@ -122,32 +76,14 @@ const putMarkerOnMap = (position) => {
   });
   markers.push(marker);
 };
-// search part
-// can search by names
-// return a list of places that matches input params
-const searchByPlace = async (input) => {
-  return await $.ajax({
-    url: `https://maps.googleapis.com/maps/api/place/findplacefromtext/json`,
-    data: {
-      key: GOOGLE_MAPS_KEY,
-      language: "en",
-      inputtype: "textquery",
-      input: input,
-      fields: "photos,formatted_address,name,rating,opening_hours,geometry",
-    },
-    success: (data) => data,
-    error: () => console.log("Error in ajax"),
-  });
-};
 
 const getUserAddress = async ({ lat, lng }) => {
   return await $.ajax({
-    url: `https://maps.googleapis.com/maps/api/geocode/json?language=ar-eg`,
+    url: `https://maps.googleapis.com/maps/api/geocode/json`,
     data: {
       key: GOOGLE_MAPS_KEY,
       latlng: lat + "," + lng,
       sensor: true,
-      language: "en",
     },
     success: (data) => data,
     error: () => console.log("Error in ajax"),
@@ -220,7 +156,6 @@ const getTimeBetweenTwoPoints = async ({ lat, lng }, destination) => {
     error: () => console.log("Error in ajax"),
   });
 };
-// ?units=imperial&origins=H8MW%2BWP%20Kolkata%20India&destinations=GCG2%2B3M%20Kolkata%20India
 
 const addMyLocationBtn = () => {
   const locationButton = document.createElement("button");
@@ -241,35 +176,20 @@ const addMyLocationBtn = () => {
     }, onError);
   });
 };
+// search part
+// can search by names
+// return a list of places based on query text
+const listOfMapSearch = async (request) =>
+  await new google.maps.places.PlacesService(map);
 
-
-function sendLocation() {
-  console.log(user_location);
-  var data = JSON.stringify({
-    "user_location": user_location
-  });
-  var wordsToBold = ["Properties", "How To Use"];
-
-  user_location = user_location.replace(new RegExp('(\\b)(' + wordsToBold.join('|') + ')(\\b)', 'ig'),
-    '<br><br><i class="fas fa-ellipsis-h fa-xs mr-2"></i>$1<b>$2</b>$3');
-
-console.log();
-var xhr = new XMLHttpRequest(user_location);
-xhr.withCredentials = true;
-
-xhr.addEventListener("readystatechange", function () {
-  if (this.readyState === 4) {
-    console.log([JSON.parse(this.responseText)]);
-    let result = [JSON.parse(this.responseText)]
-    localStorage.setItem('delivaryDetail', JSON.stringify(result))
+// remove arabic letters
+const removeArabicLettersFromText = (text) => {
+  if (ARABIC_PATTERN.test(text)) {
+    let newText = "";
+    for (let i = 0; i < text.length; i++) {
+      !ARABIC_PATTERN.test(text[i]) ? (newText += text[i]) : true;
+    }
+    return newText;
   }
-});
-
-  xhr.open("POST", "https://orderasystem.herokuapp.com/user/transportation");
-  xhr.setRequestHeader("Content-Type", "application/json");
-
-  xhr.send(data);
-}
-setTimeout(() => {
-  sendLocation()
-}, 1500);
+  return text;
+};
