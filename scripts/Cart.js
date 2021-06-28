@@ -28,7 +28,7 @@ if (user.user) {
                       </div>
                      
                       <div class="col">${res.price} EGP 
-                        <span class="close" type="button" onclick="Remove(${res.user_id})" >&#10005;</span>
+                        <span class="close" type="button" onclick="Remove(${res.item_id})" >&#10005;</span>
                       </div>
                     </div>
                 </div>
@@ -50,7 +50,6 @@ if (user.user) {
     } getCart()
 
     function Remove(Name) {
-        console.log(Name);
         var data = JSON.stringify({
             "user_id": user.user,
             "product_name": Name
