@@ -55,6 +55,7 @@ function Accept() {
     xhr.addEventListener("readystatechange", function () {
         if (this.readyState === 4) {
             console.log(this.responseText);
+            window.location = './../pages/AcceptTran.html'
         }
     });
 
