@@ -1,6 +1,6 @@
 
 var user = JSON.parse(localStorage.getItem('user'))
-if (user.user) {
+if (user.delvary) {
     setTimeout(() => {
         const addressForUserGo = { lat: 30, lng: 30 };
         const MAP_READY_INTERVAL = setInterval(() => {
