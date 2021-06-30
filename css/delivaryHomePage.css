@@ -339,3 +339,8 @@ header .app img {
   right: 10px;
   top: 10px;
 }
+
+.btnStyle{
+  background-color: #f7b614 !important;
+  border-color: #f7b614 !important;
+}
