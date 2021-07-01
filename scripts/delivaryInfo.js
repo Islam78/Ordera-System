@@ -1,7 +1,7 @@
 var ResId = localStorage.getItem('ResId');
 var Urldelvar = localStorage.getItem('Urldelvar');
 var user = JSON.parse(localStorage.getItem('user'))
-if (user.user) {
+if (user?.user) {
     function getAll() {
         var xhr = new XMLHttpRequest();
         xhr.withCredentials = true;
@@ -112,13 +112,13 @@ if (user.user) {
         setTimeout(() => {
             var qty = JSON.parse(localStorage.getItem('qty'))
             var data = JSON.stringify({
-                "user_id": `${user.user}`,
-                "product_name": `${ItemData.name}`,
-                "image": `${ItemData.image}`,
-                "qty": `${qty.qty}`,
-                "price": `${ItemData.price}`,
-                "user_location": `${ItemData.name}`,
-                "prudect_location": headers.description
+                "user_id": `${user?.user}`,
+                "product_name": `${ItemData?.name}`,
+                "image": `${ItemData?.image}`,
+                "qty": `${qty?.qty}`,
+                "price": `${ItemData?.price}`,
+                "user_location": `${ItemData?.name}`,
+                "prudect_location": headers?.description
             });
             var xhr = new XMLHttpRequest();
             xhr.withCredentials = true;

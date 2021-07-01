@@ -70,7 +70,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-light"  onclick="logout()">
+                            <a class="nav-link text-light" onclick="logout()">
                                 Sign Out
                             </a>
                         </li>
@@ -91,14 +91,16 @@
                             <div class="col">
                                 <h4><b>Shopping Cart</b></h4>
                             </div>
-                            <div class="col align-self-center text-right text-muted">3 Items</div>
                         </div>
                     </div>
                     <div id="row">
                     </div>
-                    <div class="back-to-shop">
-                        <a href="javascript:void(0)">&leftarrow;</a><span class="text-muted">Back to Home</span>
-                    </div>
+                    <a href="./delivaryHomePage.html">
+                        <div class="back-to-shop">
+                            &leftarrow;
+                            <span class="text-muted">Back to Home</span>
+                        </div>
+                    </a>
                 </div>
                 <div class="col-md-4 summary">
                     <div>
@@ -106,15 +108,15 @@
                     </div>
                     <hr>
                     <tr>
-                        <td colspan="4" class="text-right">Total Amount:</td>
-                        <td>86 EGP</td>
+                        <td colspan="4" class="text-right">Total Amount: <samp id="TotalAmount"></samp></td>
                     </tr>
                     <hr>
-                    <div class="back-to-shop text-right">
-                        <a href="../pages/OrderStatedelivary.html">
-                            <span class="text-muted">Process To Checkout</span> <i class="fas fa-long-arrow-alt-right ml-2"></i>
-                        </a>
-                    </div>
+                    <a href="javascript:void(0)">
+                        <div class="back-to-shop text-right">
+                            <span class="text-muted" onclick="CheckoutDelivary()">Process To Checkout</span> <i
+                                class="fas fa-long-arrow-alt-right ml-2"></i>
+                        </div>
+                    </a>
                 </div>
             </div>
         </div>

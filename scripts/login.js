@@ -13,11 +13,14 @@ function Login() {
                 document.getElementById('DataErr').style.display = 'none'
                 res = JSON.parse(this.responseText).result
                 localStorage.setItem('user', JSON.stringify(res))
-                if (res.delvary) {
+                if (res?.delvary) {
                     console.log('delvary');
                     window.location.href = './Captin.html'
-                } else {
+                } else if (res?.user){
                     window.location.href = './selectType.html'
+                    console.log('user');
+                }else{
+                    window.location.href = './Admin.html'
                     console.log('user');
                 }
             } else {

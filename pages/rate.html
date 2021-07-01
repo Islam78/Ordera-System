@@ -66,7 +66,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-light"  onclick="logout()">
+                            <a class="nav-link text-light" onclick="logout()">
                                 Logout
                             </a>
                         </li>
@@ -78,21 +78,21 @@
     </div>
     <!-- end header -->
     <!-- start rate -->
-   <div class="mt-5">
-    <h1>Rate Our Delivery Service</h1>
-    <div class="rating ">
-        <input type="radio" name="rating" value="5" id="5"><label for="5">☆</label>
-        <input type="radio" name="rating" value="4" id="4"><label for="4">☆</label>
-        <input type="radio" name="rating" value="3" id="3"><label for="3">☆</label>
-        <input type="radio" name="rating" value="2" id="2"><label for="2">☆</label>
-        <input type="radio" name="rating" value="1" id="1"><label for="1">☆</label>
+    <div class="mt-5">
+        <h1>Rate Our Delivery Service</h1>
+        <div class="rating ">
+            <input type="radio" name="rating" onclick="Rate(5)" value="5" id="5"><label for="5">☆</label>
+            <input type="radio" name="rating" onclick="Rate(4)" value="4" id="4"><label for="4">☆</label>
+            <input type="radio" name="rating" onclick="Rate(3)" value="3" id="3"><label for="3">☆</label>
+            <input type="radio" name="rating" onclick="Rate(2)" value="2" id="2"><label for="2">☆</label>
+            <input type="radio" name="rating" onclick="Rate(1)" value="1" id="1"><label for="1">☆</label>
+        </div>
+        <div class="row m-5">
+            <a href="../pages/selectType.html">
+                <button class="btn btn"><i class="fas fa-backward"></i> Back to Home</button>
+            </a>
+        </div>
     </div>
-    <div class="row m-5">
-        <a href="../pages/selectType.html">
-            <button class="btn btn"><i class="fas fa-backward"></i> Back to Home</button>
-        </a>
-    </div>
-   </div>
     <!-- end rate -->
     <!-- *********************************************likes************************************************ -->
     <!-- bootstrap  -->
@@ -105,7 +105,7 @@
     <!-- fontawesome -->
     <script src="../scripts/fontawesome-all.js"></script>
     <!-- my Project Files -->
-    <script src="../scripts/Profile.js"></script>
+    <script src="../scripts/rate.js"></script>
     <script src="../scripts/logout.js"></script>
 
 </body>

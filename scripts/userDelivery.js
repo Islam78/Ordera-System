@@ -68,6 +68,8 @@ if (user.user) {
       from: GlobalLatlng,
       to: { lat: Number(lat), lng: Number(lng) },
     });
+    localStorage.setItem('to', JSON.stringify({ to: { lat: Number(lat), lng: Number(lng) } }))
+    UserGoTo = { lat: Number(lat), lng: Number(lng) }
     document.getElementById("recommend").style.display = "none"
     document.getElementById("search").value = ""
 
@@ -89,11 +91,45 @@ if (user.user) {
           console.group("Person opened app:");
           console.log("Address: ", userAddress);
           console.log("lat and lng: ", GlobalLatlng);
+          GetUserLocation = { 'userAddress': userAddress, LatLong: GlobalLatlng }
           console.groupEnd();
         });
       }
     }, 100);
   });
+  var UserGoTo
+  var GetUserLocation
+  function Confirm() {
+    console.log('GetUserLocation', GetUserLocation);
+    console.log('UserGoTo', UserGoTo);
+    lanLongGOTO = { GoTo: UserGoTo, UserLocation: GetUserLocation }
+    localStorage.setItem('lanLongGOTO', JSON.stringify(lanLongGOTO))
+    console.log('lanLongGOTO', lanLongGOTO);
+    if (UserGoTo) {
+      var data = JSON.stringify({
+        "user_location": GetUserLocation.userAddress
+      });
+
+      var xhr = new XMLHttpRequest();
+      xhr.withCredentials = true;
+
+      xhr.addEventListener("readystatechange", function () {
+        if (this.readyState === 4) {
+          console.log(JSON.parse(this.responseText));
+          localStorage.setItem('delivaryDetail', JSON.stringify(JSON.parse(this.responseText)))
+          window.location = './OrderStateTransportaion.html'
+        }
+      });
+
+
+      xhr.open("POST", "https://orderasystem.herokuapp.com/user/transportation");
+      xhr.setRequestHeader("Content-Type", "application/json");
+
+      xhr.send(data);
+
+    }
+  }
+  
 } else {
   window.location = "./../pages/404.html";
 }
