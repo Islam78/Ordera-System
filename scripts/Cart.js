@@ -38,14 +38,17 @@ if (user?.user) {
                                 `
                     }
                     subData ? subData = subData.replace('undefined', '') : ''
-                    var sss
-
-                    var ss = data.forEach(a => sss += Number(a.total))
-
-                    console.log(sss);
+                    console.log('responseText', data);
+                    var totalPrice = 0
+                    for (let index = 0; index < data.length; index++) {
+                        // const element = data[index].total;
+                        totalPrice += data[index].total
+                        // console.log(element);
+                    }
+                    console.log('totalPrice', totalPrice);
 
                     document.getElementById('row').innerHTML = subData
-                    document.getElementById('TotalAmount').innerHTML = data[0].total
+                    document.getElementById('TotalAmount').innerHTML = totalPrice
 
                 } else {
                     console.log('failed');
@@ -81,6 +84,7 @@ if (user?.user) {
     }
 
     function CheckoutDelivary() {
+        console.log("ssssss");
         var data = JSON.stringify({
             "user_id": user.user
         });

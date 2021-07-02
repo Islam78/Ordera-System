@@ -1,6 +1,6 @@
 var Urldelvar = localStorage.getItem('Urldelvar');
 var user = JSON.parse(localStorage.getItem('user'))
-if (user?.user) {
+if (user.user) {
 
     data = ""
     function restorant() {
@@ -83,7 +83,7 @@ if (user?.user) {
                             <h5 class="text-center mt-3">${child.name}</h5>
                             <p>${child.description}</p>
                             <h4 class="price">${child.price} EGP</h4>
-                            <button class="btn add" onclick="getItemDetails(${child.id});AddCart()">Add to cart</button>
+                            <button class="btn add" onclick="getItemDetails(${child.id}, ${child.item_id});AddCart()">Add to cart</button>
                         </div>
                     </div>
                     `
@@ -120,10 +120,12 @@ if (user?.user) {
         localStorage.setItem('qty', JSON.stringify({ item_id: id, qty: Element }))
     }
     var ItemData
-    function getItemDetails(item_id) {
+    function getItemDetails(id, item_id) {
+        getHead(id);
         var data = JSON.stringify({
             "id_items": `${item_id}`,
-            "categroy": `${Urldelvar}`
+            "id": `${id}`,
+            "categroy": `foods`
         });
         var xhr = new XMLHttpRequest();
         xhr.withCredentials = true;
@@ -136,24 +138,45 @@ if (user?.user) {
         xhr.setRequestHeader("Content-Type", "application/json");
         xhr.send(data);
         setTimeout(() => {
-            console.log(ItemData);
+            console.log('ItemData', ItemData);
+            console.log('data', data);
 
         }, 500);
     }
+    function getHead(id) {
+        var data = JSON.stringify(
+            {
+                "id": id
+            }
+        );
+        console.log('send data', data);
+        var xhr = new XMLHttpRequest();
+        xhr.withCredentials = true;
+        xhr.addEventListener("readystatechange", function () {
+            if (this.readyState === 4) {
+                var headDetail = JSON.parse(this.responseText)
+                localStorage.setItem('headDetail', JSON.stringify(headDetail))
+            }
+        });
+        xhr.open("POST", "https://orderasystem.herokuapp.com/home/quick_detail");
+        xhr.setRequestHeader("Content-Type", "application/json");
+        xhr.send(data);
+    }
     function AddCart() {
         let headers = JSON.parse(localStorage.getItem('headDetail'))
+        console.log('headers',headers.place_name);
         setTimeout(() => {
-            var qty = JSON.parse(localStorage.getItem('qty'))
             var data = JSON.stringify({
                 "user_id": `${user?.user}`,
                 "product_name": `${ItemData?.name}`,
                 "image": `${ItemData?.image}`,
-                "qty": 1,
+                "qty": "1",
                 "price": `${ItemData?.price}`,
-                "user_location": `${ItemData?.name}`,
-                "prudect_location": headers?.description
+                "user_location": user?.Location,
+                "prudect_location": headers.location,
+                "place": headers.place_name
             });
-            console.log(data);
+            console.log('send data', data);
             var xhr = new XMLHttpRequest();
             xhr.withCredentials = true;
             xhr.addEventListener("readystatechange", function () {

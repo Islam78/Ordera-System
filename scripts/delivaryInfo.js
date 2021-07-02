@@ -46,7 +46,7 @@ if (user?.user) {
                                                     </div>                            
                                                 </div>                     
                                                 <div class="mx-3 mt-3 mb-2">
-                                                <button onclick="getItemDetails(${res.item_id});AddCart()" type="button" class="btn btn-danger btn-block">
+                                                <button onclick="getItemDetails(${res.id}, ${res.item_id});AddCart()" type="button" class="btn btn-danger btn-block">
                                                 <small >Add To Cart</small></button></div> 
                                             </div>
                                         </div>
@@ -90,10 +90,11 @@ if (user?.user) {
     }
 
     var ItemData
-    function getItemDetails(item_id) {
+    function getItemDetails(id, item_id) {
         var data = JSON.stringify({
             "id_items": `${item_id}`,
-            "categroy": `${Urldelvar}`
+            "id": `${id}`,
+            "categroy": Urldelvar
         });
         var xhr = new XMLHttpRequest();
         xhr.withCredentials = true;
@@ -117,9 +118,11 @@ if (user?.user) {
                 "image": `${ItemData?.image}`,
                 "qty": `${qty?.qty}`,
                 "price": `${ItemData?.price}`,
-                "user_location": `${ItemData?.name}`,
-                "prudect_location": headers?.description
+                "user_location": user?.Location,
+                "prudect_location": headers?.location,
+                "place": headers?.name
             });
+            console.log(data);
             var xhr = new XMLHttpRequest();
             xhr.withCredentials = true;
             xhr.addEventListener("readystatechange", function () {
@@ -131,7 +134,7 @@ if (user?.user) {
             xhr.setRequestHeader("Content-Type", "application/json");
             xhr.send(data);
 
-        }, 300);
+        }, 500);
     }
 } else {
     window.location = './../pages/404.html'

@@ -75,49 +75,98 @@
     <div class="Captin m-2">
         <div class="row">
             <div class="col-md-6 col-sm-12">
-                <select name="" id="" class="form-control">
+                <select name="" id="Status" class="form-control" onchange="Select()">
                     <option value="" selected hidden>Status</option>
-                    <option value="">Available</option>
-                    <option value="">Not Available</option>
+                    <option value="1">Available</option>
+                    <option value="0">Not Available</option>
                 </select>
             </div>
             <div class="col-md-6 col-sm-12">
-                <select name="" id="" class="form-control">
+                <select name="" id="Category" class="form-control" onchange="Select()">
                     <option value="" selected hidden>Category</option>
-                    <option value="">Transportation</option>
-                    <option value="">Delivary</option>
+                    <option value="1">Transportation</option>
+                    <option value="2">Delivary</option>
                 </select>
             </div>
             <div class="col-12 mt-3">
+                <!-- not active -->
+                <div class="alert alert-danger" role="alert" id="alert">
+                    You Are Not Active
+                </div>
+                <!-- not active -->
+                <!-- user transportation -->
                 <div class="table-responsive">
                     <table class="table">
-                        <thead>
-                            <tr>
-                                <th>Customer Location</th>
-                                <th>Drop Off</th>
-                                <th>Duration</th>
-                                <th>Distance</th>
-                                <th>Action</th>
-                            </tr>
+                        <thead id="HeadTrans">
                         </thead>
-                        <tbody id="body">
-                            <!-- <tr>
-                                <td>Food</td>
-                                <td>6'October</td>
-                                <td>El Zamalk</td>
-                                <td>Make it Spicy</td>
-                                <td>Price</td>
-                                <td>
-                                    <a href="./AcceptTran.html">
-                                        <button class="btn btn-info">Accept</button>
-                                    </a>
-                                    <button type="button" class="btn btn-danger" data-toggle="modal"
-                                        data-target="#exampleModal">Refuse</button>
-                                </td>
-                            </tr> -->
+                        <tbody id="bodyTrans">
                         </tbody>
                     </table>
                 </div>
+                <!-- user delivary -->
+                <div class="card card-1" id="bodyDelivary">
+                    <div class="card-body">
+                        <div class="row mt-4" id="DelivaryItems">
+                            <!-- <div class="col">
+                                <div class="card card-2">
+                                    <div class="card-body">
+                                        <div class="media">
+                                            <div class="sq align-self-center ">
+                                                <img class="img-fluid my-auto align-self-center mr-2 mr-md-4 pl-0 p-0 m-0"
+                                                    src="./../images/5.png" width="70" height="70" />
+                                            </div>
+                                            <div class="media-body my-auto text-right">
+                                                <div class="row my-auto flex-column flex-md-row">
+                                                    <div class="col-auto my-auto ">
+                                                        <h6 class="mb-0"> Michel Mark</h6>
+                                                    </div>
+                                                    <div class="col my-auto ">
+                                                        <small>from_location: from_location </small>
+                                                    </div>
+                                                    <div class="col my-auto ">
+                                                        <small>to_location: to_location</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <hr class="my-3 ">
+                                        <div class="row ">
+                                            <div class="col mt-auto">
+                                                <div class="media row justify-content-between ">
+                                                    <div class="col my-auto ">
+                                                        <small>product_name: product_name</small>
+                                                    </div>
+                                                    <div class="col my-auto ">
+                                                        <small>1 | 150 EGP </small>
+                                                    </div>
+                                                    <div class="col my-auto ">
+                                                        <small>total: product_name</small>
+                                                    </div>
+                                                </div>
+                                                <div class="media row justify-content-between ">
+                                                    <div class="col my-auto ">
+                                                        <small>product_name: product_name</small>
+                                                    </div>
+                                                    <div class="col my-auto ">
+                                                        <small>1 | 150 EGP </small>
+                                                    </div>
+                                                    <div class="col my-auto ">
+                                                        <small>total: product_name</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> -->
+                        </div>
+                        <hr>
+                        <div class="text-right">
+                            <button class="btn btnColor"> Get Dirction</button>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>
