@@ -33,6 +33,7 @@ if (user.delvary) {
                 "place_name": "GAD",
                 "from_location": "393 Al Moshir Ahmed Ismail - Al Akid Ibrahim Abdo, First 6th of October, Giza Governorate",
                 "to_location": "52-4 El-Salam, Al Khosous, Al Khankah, Al Qalyubia Governorate",
+                "menuId": 1,
                 "menu": [
                     {
                         "delevry": 3,
@@ -40,41 +41,6 @@ if (user.delvary) {
                         "product_name": "Cheese Sticks",
                         "qty": 1,
                         "total": 120
-                    },
-                    {
-                        "delevry": 3,
-                        "place_name": "GAD",
-                        "product_name": "Hot Dog Pizza",
-                        "qty": 4,
-                        "total": 220
-                    },
-                    {
-                        "delevry": 3,
-                        "place_name": "GAD",
-                        "product_name": "Cheese Sticks",
-                        "qty": 1,
-                        "total": 120
-                    },
-                    {
-                        "delevry": 3,
-                        "place_name": "GAD",
-                        "product_name": "Hot Dog Pizza",
-                        "qty": 4,
-                        "total": 220
-                    },
-                    {
-                        "delevry": 3,
-                        "place_name": "GAD",
-                        "product_name": "Cheese Sticks",
-                        "qty": 1,
-                        "total": 120
-                    },
-                    {
-                        "delevry": 3,
-                        "place_name": "GAD",
-                        "product_name": "Hot Dog Pizza",
-                        "qty": 4,
-                        "total": 220
                     }
                 ]
             },
@@ -83,7 +49,7 @@ if (user.delvary) {
                 "place_name": "MAC",
                 "from_location": "52-4 El-Salam, Al Khosous, Al Khankah, Al Qalyubia Governorate",
                 "to_location": "22-4 Fahmy Abd El-Aziz, Al Khosous, Al Khankah, Al Qalyubia Governorate",
-                "menuId": 1,
+                "menuId": 2,
                 "menu": [
                     {
                         "delevry": 3,
@@ -92,41 +58,6 @@ if (user.delvary) {
                         "qty": 1,
                         "total": 10
                     },
-                    {
-                        "delevry": 3,
-                        "place_name": "MAC",
-                        "product_name": "Chicken Crunchy Premium Sandwich",
-                        "qty": 1,
-                        "total": 45
-                    },
-                    {
-                        "delevry": 3,
-                        "place_name": "MAC",
-                        "product_name": "Italiano Penne Pasta",
-                        "qty": 1,
-                        "total": 10
-                    },
-                    {
-                        "delevry": 3,
-                        "place_name": "MAC",
-                        "product_name": "Chicken Crunchy Premium Sandwich",
-                        "qty": 1,
-                        "total": 45
-                    },
-                    {
-                        "delevry": 3,
-                        "place_name": "MAC",
-                        "product_name": "Italiano Penne Pasta",
-                        "qty": 1,
-                        "total": 10
-                    },
-                    {
-                        "delevry": 3,
-                        "place_name": "MAC",
-                        "product_name": "Chicken Crunchy Premium Sandwich",
-                        "qty": 1,
-                        "total": 45
-                    }
                 ]
             },
             {
@@ -134,15 +65,8 @@ if (user.delvary) {
                 "place_name": "rayan",
                 "from_location": "22-4 Fahmy Abd El-Aziz, Al Khosous, Al Khankah, Al Qalyubia Governorate",
                 "to_location": "Mohammed El-Sayed, Al Khosous, Al Khankah, Al Qalyubia Governorate",
-                "menuId": 2,
+                "menuId": 3,
                 "menu": [
-                    {
-                        "delevry": 3,
-                        "place_name": "rayan",
-                        "product_name": "Mega Vanilla",
-                        "qty": 3,
-                        "total": 24
-                    },
                     {
                         "delevry": 3,
                         "place_name": "rayan",
@@ -164,7 +88,7 @@ if (user.delvary) {
                 "place_name": "user loaction",
                 "from_location": "Mohammed El-Sayed, Al Khosous, Al Khankah, Al Qalyubia Governorate",
                 "to_location": "Amin Yousry, Al Khosous, El Marg, Cairo Governorate",
-                "menuId": 3,
+                "menuId": 4,
                 "menu": []
             },
         ]
@@ -220,11 +144,11 @@ if (user.delvary) {
         // start test
 
         let Tresult = FakeData.delivery
-        console.log(Tresult);
+        // console.log(Tresult);
         var TchildData
-        var TGrandChild
-
-        for (item of Tresult) {
+        for (let index = 0; index < Tresult.length; index++) {
+            const element = Tresult[index];
+            var item = Tresult[index]
             TchildData +=
                 `
                      <div class="col-12 m-1">
@@ -245,48 +169,48 @@ if (user.delvary) {
                                                 </div>
                                             </div>
                                         </div>
-                                        <hr class="my-3">
-                                        <div class="row " id="${item.menuId}">
-                                           
+                                        
+                                        <div class="row " id="${item?.menuId}">
+
                                         </div>
                                     </div>
                                 </div>
                             </div>
             `
-            
-            for (childItem of item.menu) {
-                TGrandChild +=
-                    `
-                    <div class="col-12" >
-                        <div class="col mt-auto">
-                            <div class="media row justify-content-between ">
-                                <div class="col my-auto ">
-                                    product_name: <small style="font-weight: bold;"> ${childItem.product_name}</small>
-                                </div>
-                                <div class="col my-auto ">
-                                    <small>${childItem.qty} | ${childItem.total / childItem.qty} </small>
-                                </div>
-                                <div class="col my-auto ">
-                                    total: <small style="font-weight: bold; color:red"> ${childItem.total}</small>
-                                </div>
-                            </div>
-                    
-                        </div>
-                    </div>
-                `
-                // setTimeout(() => {
-                TGrandChild = TGrandChild ? TGrandChild.replace('undefined', '') : ''
-                item.menuId ? document.getElementById(`${item.menuId}`).innerHTML = TGrandChild : ''
-                // console.log(document.getElementById(`${item.menuId}`));
-                // }, 1);
-            }
+            TchildData = TchildData ? TchildData.replace('undefined', '') : ''
+            document.getElementById('DelivaryItems').innerHTML = TchildData
         }
 
-        TchildData = TchildData ? TchildData.replace('undefined', '') : ''
-        document.getElementById('DelivaryItems').innerHTML = TchildData
+        for (let index = 0; index < Tresult.length; index++) {
+            var item = Tresult[index]
+            var TGrandChild
+            for (let child = 0; child < item.menu.length; child++) {
+                childItem = item.menu[child]
+                TGrandChild +=
+                    `
+                    
+                        <div class="col-12" >
+                        <hr class="my-3">
+                            <div class="col mt-auto">
+                                <div class="media row justify-content-between ">
+                                    <div class="col my-auto ">
+                                        product_name: <small style="font-weight: bold;"> ${childItem.product_name}</small>
+                                    </div>
+                                    <div class="col my-auto ">
+                                        <small>${childItem.qty} | ${childItem.total / childItem.qty} </small>
+                                    </div>
+                                    <div class="col my-auto ">
+                                        total: <small style="font-weight: bold; color:red"> ${childItem.total}</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    `
+                TGrandChild = TGrandChild ? TGrandChild.replace('undefined', '') : ''
+                document.getElementById(`${item.menuId}`).innerHTML = TGrandChild
 
-
-
+            }
+        }
 
 
 
