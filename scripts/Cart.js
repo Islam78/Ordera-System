@@ -102,6 +102,7 @@ if (user?.user) {
         xhr.withCredentials = true;
 
         xhr.addEventListener("readystatechange", function () {
+        
             if (this.readyState === 4) {
                 Swal.fire({
                     position: 'top-end',
