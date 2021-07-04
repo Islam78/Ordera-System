@@ -21,9 +21,8 @@
 </head>
 
 <body>
-
     <!-- start navbar  -->
-    <div class="NavSection">
+    <div class="NavSection ">
         <!-- start nav -->
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
             <div class="container-fluid">
@@ -42,13 +41,13 @@
                 <div class="collapse navbar-collapse navbar-item" id="navbarNav">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="./delivaryHomePage.html"> Home</a>
+                            <a class="nav-link" aria-current="page" href="./delivaryHomePage.html"> Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Quick Pick</a>
+                            <a class="nav-link" href="#Quick">Quick Pick</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">About Us</a>
+                            <a class="nav-link" href="#header">About Us</a>
                         </li>
                     </ul>
                 </div>
@@ -70,7 +69,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-light" onclick="logout()">
+                            <a class="nav-link text-light" type="button" onclick="logout()">
                                 Sign Out
                             </a>
                         </li>
@@ -78,13 +77,13 @@
                 </div>
             </div>
         </nav>
-        <!-- end nav -->
     </div>
     <!-- end header -->
+
     <!-- start cart -->
     <div class="container bootstrap snippets bootdey">
         <div class="">
-            <div class="row">
+            <div class="row p-2">
                 <div class="col-md-8 cart">
                     <div class="title">
                         <div class="row">
@@ -122,12 +121,13 @@
         </div>
         <!-- *********************************************likes************************************************ -->
         <!-- bootstrap  -->
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-            crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
-            crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+
+        <!-- sweet alert -->
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+        <!-- end sweet alert -->
         <!-- fontawesome -->
         <script src="../scripts/fontawesome-all.js"></script>
         <!-- my Project Files -->

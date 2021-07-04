@@ -77,6 +77,13 @@ function registerUser() {
                 window.location.href = './login.html'
             } else {
                 console.log('failed');
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'error',
+                    title: JSON.parse(this.responseText).error,
+                    showConfirmButton: false,
+                    timer: 1500
+                })
                 document.getElementById('DataErr').style.display = 'inline'
                 document.getElementById('DataErr').innerHTML = 'Falid To Create, Please Try Again'
             }
@@ -151,6 +158,13 @@ function registerDelivary() {
                 document.getElementById('DataErr').style.display = 'none'
                 window.location.href = './login.html'
             } else {
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'error',
+                    title: JSON.parse(this.responseText).error,
+                    showConfirmButton: false,
+                    timer: 1500
+                })
                 console.log('failed');
                 document.getElementById('DataErr').style.display = 'inline'
                 document.getElementById('DataErr').innerHTML = 'Falid To Create, Please Try Again'

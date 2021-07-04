@@ -1,6 +1,13 @@
+/* start role */
 body {
   overflow-x: hidden;
+  background-color: #ffffff;
 }
+.logo .icon {
+  color: #f7b614;
+}
+/* end role */
+
 /* start header  */
 .NavSection {
   width: 103%;
@@ -67,6 +74,7 @@ body {
 }
 /* end navbar-icon */
 /* end nav  */
+
 
 /* start category */
 .category .row {

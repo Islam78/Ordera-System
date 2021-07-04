@@ -72,7 +72,7 @@ if (user.user) {
                 <div class="form-group">
                     <label for="Location">Scooter</label>
                     <input type="Location" class="form-control" id="Scooter"
-                        placeholder=" Location " value="${user.Scooter ? user.Scooter : '0'}">
+                        placeholder=" Location " value="${user.Scooter}">
                 </div>
                 <div class="form-group text-right">
                     <button type="button" id="submit" onclick="updateDelivary()" name="submit" class="btn btnColor">Update</button>
@@ -104,8 +104,25 @@ function updateUser(form) {
 
     xhr.addEventListener("readystatechange", function () {
         if (this.readyState === 4) {
-            console.log(this.responseText);
-            // localStorage.setItem('user',json.stringify())
+            console.log('update');
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: 'Updated Success',
+                showConfirmButton: false,
+                timer: 1500
+            })
+            console.log(JSON.parse(this.responseText).result);
+            localStorage.setItem('user', JSON.stringify(JSON.parse(this.responseText).result))
+
+        } else {
+            Swal.fire({
+                position: 'top-end',
+                icon: 'error',
+                title: 'Error',
+                showConfirmButton: false,
+                timer: 1500
+            })
         }
     });
 
@@ -133,7 +150,23 @@ function updateDelivary() {
 
     xhr.addEventListener("readystatechange", function () {
         if (this.readyState === 4) {
-            console.log(this.responseText);
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: 'Updated Success',
+                showConfirmButton: false,
+                timer: 1500
+            })
+            localStorage.setItem('user', JSON.stringify(JSON.parse(this.responseText).result))
+
+        } else {
+            Swal.fire({
+                position: 'top-end',
+                icon: 'error',
+                title: 'Error',
+                showConfirmButton: false,
+                timer: 1500
+            })
         }
     });
 

@@ -1,6 +1,12 @@
+/* start role */
 body {
   overflow-x: hidden;
+  background-color: #ffffff;
 }
+.logo .icon {
+  color: #f7b614;
+}
+/* end role */
 
 /* start header  */
 .NavSection {
@@ -68,6 +74,9 @@ body {
 }
 /* end navbar-icon */
 /* end nav  */
+
+
+/* start content */
 .img-cart {
   display: block;
   max-width: 50px;

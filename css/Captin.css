@@ -1,6 +1,13 @@
+/* start role */
 body {
   overflow-x: hidden;
+  background-color: #ffffff;
 }
+.logo .icon {
+  color: #f7b614;
+}
+/* end role */
+
 /* start header  */
 .NavSection {
   width: 103%;
@@ -48,18 +55,16 @@ body {
 /* end navbar-item */
 
 /* start navbar-icon */
-.NavSection nav .navbar-icon {
-  width: 0;
-}
-.NavSection nav .navbar-icon ul li {
+
+.NavSection nav #navbarNav ul li {
   margin-left: 15px;
 }
-.NavSection nav .navbar-icon .phone span {
+.NavSection nav #navbarNav .phone span {
   color: #f7b614;
   font-weight: 700;
   margin-left: 5px;
 }
-.NavSection nav .navbar-icon .fa-phone {
+.NavSection nav #navbarNav .fa-phone {
   transform: rotate(90deg);
   -o-transform: rotate(90deg);
   -ms-transform: rotate(90deg);
@@ -67,6 +72,7 @@ body {
 }
 /* end navbar-icon */
 /* end nav  */
+
 .img-cart {
   display: block;
   max-width: 50px;

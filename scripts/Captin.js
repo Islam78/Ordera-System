@@ -6,16 +6,44 @@ if (user.delvary) {
         let Category = document.getElementById('Category')
         let alert = document.getElementById('alert')
         if (Status.value == 1) {
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: 'You Are Availabel Now',
+                showConfirmButton: false,
+                timer: 1500
+            })
             if (Category.value == 1) {
-                console.log('Transportation');
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'Transportation',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
                 alert.style.display = 'none'
                 getOrderTransportation()
             } else if (Category.value == 2) {
-                console.log('Delivary');
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'Delivary',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
                 alert.style.display = 'none'
                 getOrderDelivary()
             }
+
         } else {
+
+            Swal.fire({
+                position: 'top-end',
+                icon: 'error',
+                title: 'You are not acctive',
+                showConfirmButton: false,
+                timer: 1500
+            })
             console.log('notActive');
             document.getElementById('bodyTrans').style.display = 'none'
             document.getElementById('HeadTrans').style.display = 'none'
@@ -23,75 +51,6 @@ if (user.delvary) {
             alert.style.display = 'block'
         }
 
-    }
-
-    var FakeData =
-    {
-        "delivery": [
-            {
-                "delevry": 3,
-                "place_name": "GAD",
-                "from_location": "393 Al Moshir Ahmed Ismail - Al Akid Ibrahim Abdo, First 6th of October, Giza Governorate",
-                "to_location": "52-4 El-Salam, Al Khosous, Al Khankah, Al Qalyubia Governorate",
-                "menuId": 1,
-                "menu": [
-                    {
-                        "delevry": 3,
-                        "place_name": "GAD",
-                        "product_name": "Cheese Sticks",
-                        "qty": 1,
-                        "total": 120
-                    }
-                ]
-            },
-            {
-                "delevry": 3,
-                "place_name": "MAC",
-                "from_location": "52-4 El-Salam, Al Khosous, Al Khankah, Al Qalyubia Governorate",
-                "to_location": "22-4 Fahmy Abd El-Aziz, Al Khosous, Al Khankah, Al Qalyubia Governorate",
-                "menuId": 2,
-                "menu": [
-                    {
-                        "delevry": 3,
-                        "place_name": "MAC",
-                        "product_name": "Italiano Penne Pasta",
-                        "qty": 1,
-                        "total": 10
-                    },
-                ]
-            },
-            {
-                "delevry": 3,
-                "place_name": "rayan",
-                "from_location": "22-4 Fahmy Abd El-Aziz, Al Khosous, Al Khankah, Al Qalyubia Governorate",
-                "to_location": "Mohammed El-Sayed, Al Khosous, Al Khankah, Al Qalyubia Governorate",
-                "menuId": 3,
-                "menu": [
-                    {
-                        "delevry": 3,
-                        "place_name": "rayan",
-                        "product_name": "Mega Vanilla",
-                        "qty": 3,
-                        "total": 24
-                    },
-                    {
-                        "delevry": 3,
-                        "place_name": "rayan",
-                        "product_name": "Mega Vanilla",
-                        "qty": 3,
-                        "total": 24
-                    }
-                ]
-            },
-            {
-                "delevry": 3,
-                "place_name": "user loaction",
-                "from_location": "Mohammed El-Sayed, Al Khosous, Al Khankah, Al Qalyubia Governorate",
-                "to_location": "Amin Yousry, Al Khosous, El Marg, Cairo Governorate",
-                "menuId": 4,
-                "menu": []
-            },
-        ]
     }
 
     // to get trans
@@ -104,6 +63,13 @@ if (user.delvary) {
         xhr.withCredentials = true;
         xhr.addEventListener("readystatechange", function () {
             if (this.readyState === 4) {
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'Transportation',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
                 var result = JSON.parse(this.responseText).result
                 localStorage.setItem('AcceptTransportation', JSON.stringify(result))
                 console.log(result);
@@ -126,6 +92,14 @@ if (user.delvary) {
                 }
                 childData ? childData = childData.replace('undefined', '') : childData = ''
                 document.getElementById('bodyTrans').innerHTML = childData
+            } else {
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'error',
+                    title: 'Error',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
             }
         });
         xhr.open("POST", "https://orderasystem.herokuapp.com/delvary/transportation");
@@ -141,53 +115,59 @@ if (user.delvary) {
         document.getElementById('bodyDelivary').style.display = 'block'
         var data = JSON.stringify({ "delvary_id": user.delvary });
         var xhr = new XMLHttpRequest();
-        // start test
-
-        let Tresult = FakeData.delivery
-        // console.log(Tresult);
-        var TchildData
-        for (let index = 0; index < Tresult.length; index++) {
-            const element = Tresult[index];
-            var item = Tresult[index]
-            TchildData +=
-                `
-                     <div class="col-12 m-1">
-                                <div class="card card-2">
-                                    <div class="card-body">
-                                        <div class="media">
-                                            <div class="media-body my-auto text-right">
-                                                <div class="row my-auto flex-column flex-md-row">
-                                                    <div class="col-auto my-auto ">
-                                                        <h6 class="mb-0">${item.place_name}</h6>
-                                                    </div>
-                                                    <div class="col my-auto ">
-                                                    from location: <small style="font-weight: bold;">${item.from_location} </small>
-                                                    </div>
-                                                    <div class="col my-auto ">
-                                                    to location: <small style="font-weight: bold;"> ${item.to_location}</small>
+        xhr.withCredentials = true;
+        xhr.addEventListener("readystatechange", function () {
+            if (this.readyState === 4) {
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'Delivary',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+                var result = JSON.parse(this.responseText).delivery
+                var TchildData
+                for (let index = 0; index < result.length; index++) {
+                    const element = result[index];
+                    var item = result[index]
+                    TchildData +=
+                        `
+                            <div class="col-12 m-1">
+                                    <div class="card card-2">
+                                        <div class="card-body">
+                                            <div class="media">
+                                                <div class="media-body my-auto text-right">
+                                                    <div class="row my-auto flex-column flex-md-row">
+                                                        <div class="col-auto my-auto ">
+                                                            <h6 class="mb-0">${item.place_name}</h6>
+                                                        </div>
+                                                        <div class="col my-auto ">
+                                                        from location: <small style="font-weight: bold;">${item.from_location} </small>
+                                                        </div>
+                                                        <div class="col my-auto ">
+                                                        to location: <small style="font-weight: bold;"> ${item.to_location}</small>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        
-                                        <div class="row " id="${item?.menuId}">
-
+                                            
+                                            <div class="row " id="${item?.menuId}">
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-            `
-            TchildData = TchildData ? TchildData.replace('undefined', '') : ''
-            document.getElementById('DelivaryItems').innerHTML = TchildData
-        }
+                            `
+                    TchildData = TchildData ? TchildData.replace('undefined', '') : ''
+                    document.getElementById('DelivaryItems').innerHTML = TchildData
+                }
 
-        for (let index = 0; index < Tresult.length; index++) {
-            var item = Tresult[index]
-            var TGrandChild
-            for (let child = 0; child < item.menu.length; child++) {
-                childItem = item.menu[child]
-                TGrandChild +=
-                    `
+                for (let index = 0; index < result.length; index++) {
+                    var item = result[index]
+                    var TGrandChild
+                    for (let child = 0; child < item.menu?.length; child++) {
+                        childItem = item.menu[child]
+                        TGrandChild +=
+                            `
                     
                         <div class="col-12" >
                         <hr class="my-3">
@@ -206,56 +186,24 @@ if (user.delvary) {
                             </div>
                         </div>
                     `
-                TGrandChild = TGrandChild ? TGrandChild.replace('undefined', '') : ''
-                document.getElementById(`${item.menuId}`).innerHTML = TGrandChild
+                        TGrandChild = TGrandChild ? TGrandChild.replace('undefined', '') : ''
+                        document.getElementById(`${item.menuId}`).innerHTML = TGrandChild
 
-            }
-        }
-
-
-
-
-
-
-
-
-
-
-
-
-
-        // end test
-        xhr.withCredentials = true;
-        xhr.addEventListener("readystatechange", function () {
-            if (this.readyState === 4) {
-                var result = JSON.parse(this.responseText)
-                console.log(result);
-                // console.log(result);
-                // var childData
-                // for (child of result) {
-                //     childData += `
-                //     <tr>
-                //         <td>${child.From_location}</td>
-                //         <td>${child.to_location}</td>
-                //         <td>${child.duration}</td>
-                //         <td>${child.distance}</td>
-                //         <td>
-                //             <a >
-                //                 <button class="btn btn-info" onclick="Accept()">Accept</button>
-                //             </a>
-                //             <button type="button" class="btn btn-danger" data-toggle="modal"
-                //                 data-target="#exampleModal">Refuse</button>
-                //         </td>
-                //     </tr>
-                //     `
-                // }
-                // childData ? childData = childData.replace('undefined', '') : childData = ''
-                // document.getElementById('bodyDelivary').innerHTML = childData
+                    }
+                }
+            } else {
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'error',
+                    title: 'Error',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
             }
         });
-        // xhr.open("POST", "https://orderasystem.herokuapp.com/delvary/delivery");
-        // xhr.setRequestHeader("Content-Type", "application/json");
-        // xhr.send(data);
+        xhr.open("POST", "https://orderasystem.herokuapp.com/delvary/delivery");
+        xhr.setRequestHeader("Content-Type", "application/json");
+        xhr.send(data);
     }
 
 } else {
@@ -269,9 +217,9 @@ function AcceptTransportation() {
     }
 }
 
-function Accept() {
-
-    console.log();
+function AcceptDelivary() {
+    // localStorage.setItem('AcceptTransportation', JSON.stringify(result))
+    console.log('getOrderDelivary');
     // var data = JSON.stringify({
     //     "delvary_id": user.delvary
     // });

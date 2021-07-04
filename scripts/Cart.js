@@ -41,12 +41,8 @@ if (user?.user) {
                     console.log('responseText', data);
                     var totalPrice = 0
                     for (let index = 0; index < data.length; index++) {
-                        // const element = data[index].total;
                         totalPrice += data[index].total
-                        // console.log(element);
                     }
-                    console.log('totalPrice', totalPrice);
-
                     document.getElementById('row').innerHTML = subData
                     document.getElementById('TotalAmount').innerHTML = totalPrice
 
@@ -58,7 +54,6 @@ if (user?.user) {
 
         xhr.open("POST", "https://orderasystem.herokuapp.com/cart/listcarts");
         xhr.setRequestHeader("Content-Type", "application/json");
-
         xhr.send(data);
     } getCart()
 
@@ -73,8 +68,22 @@ if (user?.user) {
 
         xhr.addEventListener("readystatechange", function () {
             if (this.readyState === 4) {
-                console.log(this.responseText);
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'Deleted item',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
                 getCart()
+            } else {
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'error',
+                    title: 'Error',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
             }
         });
         xhr.open("POST", "https://orderasystem.herokuapp.com/cart/delete_carts");
@@ -94,8 +103,23 @@ if (user?.user) {
 
         xhr.addEventListener("readystatechange", function () {
             if (this.readyState === 4) {
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'Deleted item',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
                 localStorage.setItem('delivaryDetail', JSON.stringify(JSON.parse(this.responseText)))
                 window.location = './OrderStateTransportaion.html'
+            } else {
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'error',
+                    title: 'Error',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
             }
         });
 

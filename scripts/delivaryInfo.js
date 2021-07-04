@@ -56,7 +56,13 @@ if (user?.user) {
                         subData ? subData = subData.replace('undefined', '') : subData = ''
                         document.getElementById('row').innerHTML = subData
                     } else {
-                        console.log('failed');
+                        Swal.fire({
+                            position: 'top-end',
+                            icon: 'error',
+                            title: 'Error',
+                            showConfirmButton: false,
+                            timer: 1500
+                        })
                     }
                 }
 
@@ -101,6 +107,14 @@ if (user?.user) {
         xhr.addEventListener("readystatechange", function () {
             if (this.readyState === 4) {
                 ItemData = JSON.parse(this.responseText).result[0]
+            } else {
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'error',
+                    title: 'Error',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
             }
         });
         xhr.open("POST", "https://orderasystem.herokuapp.com/home/categroy");
@@ -128,12 +142,26 @@ if (user?.user) {
             xhr.addEventListener("readystatechange", function () {
                 if (this.readyState === 4) {
                     console.log(this.responseText);
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: 'Add To Cart',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                } else {
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'error',
+                        title: 'Error',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
                 }
             });
             xhr.open("POST", "https://orderasystem.herokuapp.com/cart/addcart");
             xhr.setRequestHeader("Content-Type", "application/json");
             xhr.send(data);
-
         }, 500);
     }
 } else {

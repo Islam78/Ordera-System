@@ -1,6 +1,13 @@
+/* start role */
 body {
   overflow-x: hidden;
+  background-color: #ffffff;
 }
+.logo .icon {
+  color: #f7b614;
+}
+/* end role */
+
 /* start header  */
 .NavSection {
   width: 103%;
@@ -66,6 +73,9 @@ body {
   -moz-transform: rotate(90deg);
 }
 /* end navbar-icon */
+/* end nav  */
+
+
 
 .account-settings .user-profile {
   margin: 0 0 1rem 0;

@@ -16,7 +16,13 @@ if (user.user) {
                     localStorage.setItem('delivary', JSON.stringify(data))
                     localStorage.setItem('Urldelvar', 'foods')
                 } else {
-                    console.log('failed');
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'error',
+                        title: 'Error',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
                 }
             }
         });
@@ -36,7 +42,13 @@ if (user.user) {
                     localStorage.setItem('delivary', JSON.stringify(data))
                     localStorage.setItem('Urldelvar', 'tools')
                 } else {
-                    console.log('failed');
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'error',
+                        title: 'Error',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
                 }
             }
         });
@@ -57,7 +69,13 @@ if (user.user) {
                     localStorage.setItem('Urldelvar', 'groceries')
 
                 } else {
-                    console.log('failed');
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'error',
+                        title: 'Error',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
                 }
             }
         });
@@ -92,7 +110,13 @@ if (user.user) {
                     document.getElementById('row').innerHTML = childData
                     console.log('successful');
                 } else {
-                    console.log('failed');
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'error',
+                        title: 'Error',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
                 }
             }
         });
@@ -132,16 +156,20 @@ if (user.user) {
         xhr.addEventListener("readystatechange", function () {
             if (this.readyState === 4) {
                 ItemData = JSON.parse(this.responseText).result[0]
+
+            } else {
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'error',
+                    title: 'Error',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
             }
         });
         xhr.open("POST", "https://orderasystem.herokuapp.com/home/categroy");
         xhr.setRequestHeader("Content-Type", "application/json");
         xhr.send(data);
-        setTimeout(() => {
-            console.log('ItemData', ItemData);
-            console.log('data', data);
-
-        }, 500);
     }
     function getHead(id) {
         var data = JSON.stringify(
@@ -164,7 +192,7 @@ if (user.user) {
     }
     function AddCart() {
         let headers = JSON.parse(localStorage.getItem('headDetail'))
-        console.log('headers',headers.place_name);
+        console.log('headers', headers.place_name);
         setTimeout(() => {
             var data = JSON.stringify({
                 "user_id": `${user?.user}`,
@@ -181,6 +209,22 @@ if (user.user) {
             xhr.withCredentials = true;
             xhr.addEventListener("readystatechange", function () {
                 if (this.readyState === 4) {
+                    console.log(this.responseText);
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: 'Add To Cart',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                } else {
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'error',
+                        title: 'Error',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
                 }
             });
             xhr.open("POST", "https://orderasystem.herokuapp.com/cart/addcart");

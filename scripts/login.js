@@ -16,16 +16,24 @@ function Login() {
                 if (res?.delvary) {
                     console.log('delvary');
                     window.location.href = './Captin.html'
-                } else if (res?.user){
+                } else if (res?.user) {
                     window.location.href = './selectType.html'
                     console.log('user');
-                }else{
+                } else {
                     window.location.href = './Admin.html'
                     console.log('user');
                 }
             } else {
                 console.log('failed');
-                document.getElementById('DataErr').innerHTML = 'Invalid User'
+                console.log(JSON.parse(this.responseText).error);
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'error',
+                    title: JSON.parse(this.responseText).error,
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+                document.getElementById('DataErr').innerHTML = JSON.parse(this.responseText).error
             }
         }
     });
