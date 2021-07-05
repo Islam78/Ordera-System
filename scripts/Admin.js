@@ -17,8 +17,7 @@ function GetAll() {
                     <td>${child.id}</td>
                     <td>${child.First_name} ${child.last_name}</td>
                     <td>${child.Email}</td>
-                    <td>${'01111111111'}</td>
-                    <td>${'45'}</td>
+                    <td>${child.Scooter}</td>
                     <td>
                         <button class="btn btn-danger" onclick="Action(${child.id}, 0)" data-toggle="modal"
                             data-target="#exampleModalCenter">Refuse</button>
@@ -31,6 +30,13 @@ function GetAll() {
                 document.getElementById('Body').innerHTML = childData
             } else {
                 console.log('failed');
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'error',
+                    title: 'Error',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
             }
         }
     });
@@ -52,7 +58,22 @@ function Action(id, type) {
         if (this.readyState === 4) {
             console.log(this.responseText);
             if (this.status === 200) {
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'Success',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
                 GetAll()
+            } else {
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'error',
+                    title: 'Error',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
             }
         }
     });

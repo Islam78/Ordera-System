@@ -123,47 +123,58 @@ if (user?.user) {
     }
 
     function AddCart() {
-        let headers = JSON.parse(localStorage.getItem('headDetail'))
-        setTimeout(() => {
-            var qty = JSON.parse(localStorage.getItem('qty'))
-            var data = JSON.stringify({
-                "user_id": `${user?.user}`,
-                "product_name": `${ItemData?.name}`,
-                "image": `${ItemData?.image}`,
-                "qty": `${qty?.qty}`,
-                "price": `${ItemData?.price}`,
-                "user_location": user?.Location,
-                "prudect_location": headers?.location,
-                "place": headers?.name
-            });
-            console.log(data);
-            var xhr = new XMLHttpRequest();
-            xhr.withCredentials = true;
-            xhr.addEventListener("readystatechange", function () {
-                if (this.readyState === 4) {
-                    console.log(this.responseText);
-                    Swal.fire({
-                        position: 'top-end',
-                        icon: 'success',
-                        title: 'Add To Cart',
-                        showConfirmButton: false,
-                        timer: 1500
-                    })
-                } else {
-                    Swal.fire({
-                        position: 'top-end',
-                        icon: 'error',
-                        title: 'Error',
-                        showConfirmButton: false,
-                        timer: 1500
-                    })
-                }
-            });
-            xhr.open("POST", "https://orderasystem.herokuapp.com/cart/addcart");
-            xhr.setRequestHeader("Content-Type", "application/json");
-            xhr.send(data);
-        }, 500);
+        var qty = JSON.parse(localStorage.getItem('qty'))
+        if (qty?.qty > 1) {
+            let headers = JSON.parse(localStorage.getItem('headDetail'))
+            setTimeout(() => {
+                var data = JSON.stringify({
+                    "user_id": `${user?.user}`,
+                    "product_name": `${ItemData?.name}`,
+                    "image": `${ItemData?.image}`,
+                    "qty": `${qty?.qty}`,
+                    "price": `${ItemData?.price}`,
+                    "user_location": user?.Location,
+                    "prudect_location": headers?.location,
+                    "place": headers?.name
+                });
+                console.log(data);
+                var xhr = new XMLHttpRequest();
+                xhr.withCredentials = true;
+                xhr.addEventListener("readystatechange", function () {
+                    if (this.readyState === 4) {
+                        console.log(this.responseText);
+                        Swal.fire({
+                            position: 'top-end',
+                            icon: 'success',
+                            title: 'Add To Cart',
+                            showConfirmButton: false,
+                            timer: 1500
+                        })
+                    } else {
+                        Swal.fire({
+                            position: 'top-end',
+                            icon: 'error',
+                            title: 'Error',
+                            showConfirmButton: false,
+                            timer: 1500
+                        })
+                    }
+                });
+                xhr.open("POST", "https://orderasystem.herokuapp.com/cart/addcart");
+                xhr.setRequestHeader("Content-Type", "application/json");
+                xhr.send(data);
+            }, 500);
+        } else {
+            Swal.fire({
+                position: 'top-end',
+                icon: 'warning',
+                title: 'Pleas Select Quantity',
+                showConfirmButton: false,
+                timer: 1500
+            })
+        }
     }
+
 } else {
     window.location = './../pages/404.html'
 }

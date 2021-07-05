@@ -28,7 +28,6 @@ if (user.user) {
   }, 300);
 } else {
   window.location = './../pages/404.html'
-
 }
 
 

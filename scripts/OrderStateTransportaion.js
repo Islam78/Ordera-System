@@ -73,6 +73,14 @@ function GoLocation(delvary_id) {
         if (this.readyState === 4) {
             console.log(this.responseText);
             document.getElementById('Accept').style.display = 'none'
+        } else {
+            Swal.fire({
+                position: 'top-end',
+                icon: 'error',
+                title: 'Error',
+                showConfirmButton: false,
+                timer: 1500
+            })
         }
     });
 

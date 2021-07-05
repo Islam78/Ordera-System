@@ -29,7 +29,13 @@ function GetAll() {
                     document.getElementById("body").innerHTML = childData;
                 }
             } else {
-                console.log('failed');
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'error',
+                    title: 'Error',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
             }
         }
     });
@@ -52,7 +58,22 @@ function DeleteUser(id) {
         if (this.readyState === 4) {
             console.log(this.responseText);
             if (this.status === 200) {
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'Success',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
                 GetAll()
+            } else {
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'error',
+                    title: 'Error',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
             }
         }
     });

@@ -55,7 +55,6 @@ if (user.user) {
       });
     } else {
       document.getElementById("recommend").style.display = "none";
-
       console.log("search value is empty");
     }
   }
@@ -118,18 +117,33 @@ if (user.user) {
           console.log(JSON.parse(this.responseText));
           localStorage.setItem('delivaryDetail', JSON.stringify(JSON.parse(this.responseText)))
           window.location = './OrderStateTransportaion.html'
+        }else{
+          Swal.fire({
+            position: 'top-end',
+            icon: 'error',
+            title: 'Error',
+            showConfirmButton: false,
+            timer: 1500
+          })
         }
       });
 
 
       xhr.open("POST", "https://orderasystem.herokuapp.com/user/transportation");
       xhr.setRequestHeader("Content-Type", "application/json");
-
       xhr.send(data);
 
+    }else{
+      Swal.fire({
+        position: 'top-end',
+        icon: 'error',
+        title: 'Error',
+        showConfirmButton: false,
+        timer: 1500
+      })
     }
   }
-  
+
 } else {
   window.location = "./../pages/404.html";
 }
