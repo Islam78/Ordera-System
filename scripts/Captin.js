@@ -134,7 +134,7 @@ if (user.delvary) {
                         `
                             <div class="col-12 m-1" >
                                     <div class="card card-2">
-                                        <div class="card-body" style="color:black;background:#F7AD26;font-weight:bolder;">
+                                        <div class="card-body" style="color:black;background:#F7B614;font-weight:bolder;">
                                             <div class="media">
                                                 <div class="media-body my-auto text-right">
                                                     <div class="row my-auto flex-column flex-md-row">
