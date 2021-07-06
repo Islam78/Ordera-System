@@ -132,20 +132,20 @@ if (user.delvary) {
                     var item = result[index]
                     TchildData +=
                         `
-                            <div class="col-12 m-1">
+                            <div class="col-12 m-1" >
                                     <div class="card card-2">
-                                        <div class="card-body">
+                                        <div class="card-body" style="color:black;background:#F7AD26;font-weight:bolder;">
                                             <div class="media">
                                                 <div class="media-body my-auto text-right">
                                                     <div class="row my-auto flex-column flex-md-row">
                                                         <div class="col-auto my-auto ">
-                                                            <h6 class="mb-0">${item.place_name}</h6>
+                                                            <h6 class="mb-0" style="text-align: left; font-weight:bolder;">${item.place_name}</h6>
                                                         </div>
-                                                        <div class="col my-auto ">
-                                                        from location: <small>${item.from_location} </small>
+                                                        <div class="col my-auto " style="text-align: left;">
+                                                        From Location: <small>${item.from_location} </small>
                                                         </div>
-                                                        <div class="col my-auto ">
-                                                        to location: <small> ${item.to_location}</small>
+                                                        <div class="col my-auto "  style="text-align: left;">
+                                                        To Location: <small> ${item.to_location}</small>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -174,13 +174,13 @@ if (user.delvary) {
                             <div class="col mt-auto">
                                 <div class="media row justify-content-between ">
                                     <div class="col my-auto ">
-                                        product_name: <small> ${childItem.product_name}</small>
+                                        Product Name:  ${childItem.product_name}
                                     </div>
                                     <div class="col my-auto ">
-                                        <small>${childItem.qty} | ${childItem.total / childItem.qty} </small>
+                                        ${childItem.qty} | ${childItem.total / childItem.qty} 
                                     </div>
-                                    <div class="col my-auto ">
-                                        total: <small style="font-weight: bold;"> ${childItem.total}</small>
+                                    <div class="col my-auto " style="font-weight: bolder;">
+                                        Total: ${childItem.total}
                                     </div>
                                 </div>
                             </div>
