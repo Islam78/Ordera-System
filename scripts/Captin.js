@@ -142,10 +142,10 @@ if (user.delvary) {
                                                             <h6 class="mb-0">${item.place_name}</h6>
                                                         </div>
                                                         <div class="col my-auto ">
-                                                        from location: <small style="font-weight: bold;">${item.from_location} </small>
+                                                        from location: <small>${item.from_location} </small>
                                                         </div>
                                                         <div class="col my-auto ">
-                                                        to location: <small style="font-weight: bold;"> ${item.to_location}</small>
+                                                        to location: <small> ${item.to_location}</small>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -174,13 +174,13 @@ if (user.delvary) {
                             <div class="col mt-auto">
                                 <div class="media row justify-content-between ">
                                     <div class="col my-auto ">
-                                        product_name: <small style="font-weight: bold;"> ${childItem.product_name}</small>
+                                        product_name: <small> ${childItem.product_name}</small>
                                     </div>
                                     <div class="col my-auto ">
                                         <small>${childItem.qty} | ${childItem.total / childItem.qty} </small>
                                     </div>
                                     <div class="col my-auto ">
-                                        total: <small style="font-weight: bold; color:red"> ${childItem.total}</small>
+                                        total: <small style="font-weight: bold;"> ${childItem.total}</small>
                                     </div>
                                 </div>
                             </div>

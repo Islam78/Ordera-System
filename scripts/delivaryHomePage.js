@@ -231,7 +231,7 @@ if (user.user) {
             xhr.setRequestHeader("Content-Type", "application/json");
             xhr.send(data);
 
-        }, 400);
+        }, 600);
     }
 }
 else {

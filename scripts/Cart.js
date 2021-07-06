@@ -113,7 +113,7 @@ if (user?.user) {
                 Swal.fire({
                     position: 'top-end',
                     icon: 'success',
-                    title: 'Deleted item',
+                    title: 'success',
                     showConfirmButton: false,
                     timer: 1500
                 })

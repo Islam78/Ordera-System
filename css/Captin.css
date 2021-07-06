@@ -72,7 +72,9 @@ body {
 }
 /* end navbar-icon */
 /* end nav  */
-
+#DelivaryItems{
+  font-family: -webkit-pictograph;
+}
 .img-cart {
   display: block;
   max-width: 50px;
