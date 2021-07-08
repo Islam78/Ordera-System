@@ -37,7 +37,7 @@ function Login() {
             }
         }
     });
-    xhr.open("POST", "https://orderasystem.herokuapp.com/login");
+    xhr.open("POST", "https://orderasystem.herokuapp.com/signin");
     xhr.setRequestHeader("Content-Type", "application/json");
     xhr.setRequestHeader('Accept', 'application/json');
     xhr.send(FormData);

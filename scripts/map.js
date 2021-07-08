@@ -1,4 +1,4 @@
-const GOOGLE_MAPS_KEY = "AIzaSyA7nfzqox7HP_crX14tFzVLVpW3r5PnHoI";
+const GOOGLE_MAPS_KEY = "AIzaSyC_5HAzjVTSMJ3SFuZcxyv3-eddSB_70NE";
 
 let map;
 let directionsService;

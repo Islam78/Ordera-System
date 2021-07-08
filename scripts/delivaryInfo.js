@@ -124,7 +124,7 @@ if (user?.user) {
 
     function AddCart() {
         var qty = JSON.parse(localStorage.getItem('qty'))
-        if (qty?.qty > 1) {
+        if (qty?.qty >= 1) {
             let headers = JSON.parse(localStorage.getItem('headDetail'))
             setTimeout(() => {
                 var data = JSON.stringify({

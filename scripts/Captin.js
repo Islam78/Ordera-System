@@ -1,6 +1,28 @@
 user = JSON.parse(localStorage.getItem('user'))
 if (user.delvary) {
 
+    // console.log(JSON.parse(localStorage.getItem('AcceptTransportation')));
+    document.addEventListener("DOMContentLoaded", (event) => {
+        const MAP_READY_INTERVAL = setInterval(() => {
+            if (GlobalLatlng.lat) {
+                // map functionallity is ready
+                clearInterval(MAP_READY_INTERVAL);
+                getUserAddress(GlobalLatlng).then((data) => {
+                    //   User location as text
+                    const userAddress = removeArabicLettersFromText(
+                        data.results[0].formatted_address
+                    );
+                    localStorage.setItem('DelivaryAddressShared', JSON.stringify(userAddress))
+                    console.group("Person opened app:");
+                    console.log("Address: ", userAddress);
+                    console.log("lat and lng: ", GlobalLatlng);
+                    GetUserLocation = { 'userAddress': userAddress, LatLong: GlobalLatlng }
+                    console.groupEnd();
+                });
+            }
+        }, 100);
+    });
+
     function Select() {
         let Status = document.getElementById('Status')
         let Category = document.getElementById('Category')
@@ -13,7 +35,9 @@ if (user.delvary) {
                 showConfirmButton: false,
                 timer: 1500
             })
+
             if (Category.value == 1) {
+                SendStatus()
                 Swal.fire({
                     position: 'top-end',
                     icon: 'success',
@@ -24,6 +48,7 @@ if (user.delvary) {
                 alert.style.display = 'none'
                 getOrderTransportation()
             } else if (Category.value == 2) {
+                SendStatus()
                 Swal.fire({
                     position: 'top-end',
                     icon: 'success',
@@ -50,9 +75,38 @@ if (user.delvary) {
             document.getElementById('bodyDelivary').style.display = 'none'
             alert.style.display = 'block'
         }
-
     }
+    // sennd to back
+    function SendStatus() {
+        let delivaryLocation = JSON.parse(localStorage.getItem('DelivaryAddressShared'))
+        var data = JSON.stringify({ "delvary_id": user.delvary, "status": Status.value, "type": Category.value, "location": delivaryLocation })
+        console.log(data);
+        var xhr = new XMLHttpRequest();
+        xhr.withCredentials = true;
+        xhr.addEventListener("readystatechange", function () {
+            if (this.readyState === 4) {
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'Transportation',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
 
+            } else {
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'error',
+                    title: 'Error',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+            }
+        });
+        xhr.open("put", "https://orderasystem.herokuapp.com/user/status");
+        xhr.setRequestHeader("Content-Type", "application/json");
+        xhr.send(data);
+    }
     // to get trans
     function getOrderTransportation() {
         document.getElementById('bodyTrans').style.display = 'contents'
@@ -80,7 +134,7 @@ if (user.delvary) {
                         <td>${child.From_location}</td>
                         <td>${child.to_location}</td>
                         <td>${child.duration}</td>
-                        <td>${child.distance}</td>
+                        <td>${Number(child.distance) / 1.60} km</td>
                         <td>
                             <a >
                                 <button class="btn btnColor" onclick="AcceptTransportation()">Get Direction</button>
@@ -188,7 +242,7 @@ if (user.delvary) {
                     `
                         TGrandChild = TGrandChild ? TGrandChild.replace('undefined', '') : ''
                         document.getElementById(`${item.menuId}`).innerHTML = TGrandChild
-
+                        // return;
                     }
                 }
             } else {
@@ -213,28 +267,47 @@ if (user.delvary) {
 function AcceptTransportation() {
     if (JSON.parse(localStorage.getItem('AcceptTransportation')) != null) {
         console.log(JSON.parse(localStorage.getItem('AcceptTransportation')));
-        window.location = './../pages/AcceptTran.html'
+        // window.location = './../pages/AcceptTran.html'
     }
+    var data = JSON.stringify({
+        "delvary_id": user.delvary,
+        "type": "transportation"
+    });
+    var xhr = new XMLHttpRequest();
+    xhr.withCredentials = true;
+
+    xhr.addEventListener("readystatechange", function () {
+        if (this.readyState === 4) {
+            console.log(this.responseText);
+            window.location = './../pages/AcceptTran.html'
+        }
+    });
+
+    xhr.open("POST", "https://orderasystem.herokuapp.com/delvary/approve");
+    xhr.setRequestHeader("Content-Type", "application/json");
+
+    xhr.send(data);
 }
 
 function AcceptDelivary() {
     // localStorage.setItem('AcceptTransportation', JSON.stringify(result))
     console.log('getOrderDelivary');
-    // var data = JSON.stringify({
-    //     "delvary_id": user.delvary
-    // });
-    // var xhr = new XMLHttpRequest();
-    // xhr.withCredentials = true;
+    var data = JSON.stringify({
+        "delvary_id": user.delvary,
+        "type": "delivery"
+    });
+    var xhr = new XMLHttpRequest();
+    xhr.withCredentials = true;
 
-    // xhr.addEventListener("readystatechange", function () {
-    //     if (this.readyState === 4) {
-    //         console.log(this.responseText);
-    //         window.location = './../pages/AcceptTran.html'
-    //     }
-    // });
+    xhr.addEventListener("readystatechange", function () {
+        if (this.readyState === 4) {
+            console.log(this.responseText);
+            window.location = './../pages/AcceptTran.html'
+        }
+    });
 
-    // xhr.open("POST", "https://orderasystem.herokuapp.com/delvary/approve");
-    // xhr.setRequestHeader("Content-Type", "application/json");
+    xhr.open("POST", "https://orderasystem.herokuapp.com/delvary/approve");
+    xhr.setRequestHeader("Content-Type", "application/json");
 
-    // xhr.send(data);
+    xhr.send(data);
 }

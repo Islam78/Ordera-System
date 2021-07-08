@@ -43,7 +43,8 @@ if (user?.user) {
                     for (let index = 0; index < data.length; index++) {
                         totalPrice += data[index].total
                     }
-                    document.getElementById('row').innerHTML = subData
+                    data.length < 1 ? data = '' :  document.getElementById('row').innerHTML = subData
+                   
                     document.getElementById('TotalAmount').innerHTML = totalPrice
 
                 } else {
@@ -118,7 +119,7 @@ if (user?.user) {
                     timer: 1500
                 })
                 localStorage.setItem('delivaryDetail', JSON.stringify(JSON.parse(this.responseText)))
-                window.location = './OrderStateTransportaion.html'
+                window.location = './OrderStatedelivary.html'
             } else {
                 Swal.fire({
                     position: 'top-end',

@@ -44,7 +44,7 @@ if (user.user) {
                 const lat = res.geometry.location.lat();
                 const lng = res.geometry.location.lng();
                 child += `
-                 <span class="child recomended-search-item" type="button" data-lat="${lat}" data-lng="${lng}" >${res.name}</span> 
+                 <span class="child recomended-search-item" type="button"  data-lat="${lat}" data-lng="${lng}" >${res.name}</span> 
                             `;
               }
               child ? (child = child.replace("undefined", "")) : "";
@@ -63,6 +63,9 @@ if (user.user) {
     // function GoLocation(e) {
     const target = e.target;
     const { lat, lng } = target.dataset;
+    // console.log('target',target.innerHTML);
+    localStorage.setItem('GetUserLocation', JSON.stringify(target.innerHTML))
+
     displayRoute({
       from: GlobalLatlng,
       to: { lat: Number(lat), lng: Number(lng) },
@@ -99,11 +102,11 @@ if (user.user) {
   var UserGoTo
   var GetUserLocation
   function Confirm() {
-    console.log('GetUserLocation', GetUserLocation);
-    console.log('UserGoTo', UserGoTo);
     lanLongGOTO = { GoTo: UserGoTo, UserLocation: GetUserLocation }
     localStorage.setItem('lanLongGOTO', JSON.stringify(lanLongGOTO))
-    console.log('lanLongGOTO', lanLongGOTO);
+    localStorage.setItem('UserLocation', JSON.stringify(GetUserLocation.userAddress))
+
+
     if (UserGoTo) {
       var data = JSON.stringify({
         "user_location": GetUserLocation.userAddress
@@ -117,7 +120,7 @@ if (user.user) {
           console.log(JSON.parse(this.responseText));
           localStorage.setItem('delivaryDetail', JSON.stringify(JSON.parse(this.responseText)))
           window.location = './OrderStateTransportaion.html'
-        }else{
+        } else {
           Swal.fire({
             position: 'top-end',
             icon: 'error',
@@ -126,18 +129,16 @@ if (user.user) {
             timer: 1500
           })
         }
-      });
-
-
+      })
       xhr.open("POST", "https://orderasystem.herokuapp.com/user/transportation");
       xhr.setRequestHeader("Content-Type", "application/json");
       xhr.send(data);
 
-    }else{
+    } else {
       Swal.fire({
         position: 'top-end',
         icon: 'error',
-        title: 'Error',
+        title: 'Where Is You Go!',
         showConfirmButton: false,
         timer: 1500
       })

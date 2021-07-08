@@ -22,7 +22,7 @@ if (user?.user && scoter) {
                     </li>
                     <li class="list-group-item">
                         <div class="md-v-line"></div>
-                        <i class="fas fa-people-arrows mr-5 Color fa-2x"></i>Distance: ${scoter['distance']}
+                        <i class="fas fa-people-arrows mr-5 Color fa-2x"></i>Distance: ${Number(Number(scoter['distance']) / 1.60).toFixed(2)}  km
                     </li>
                     <li class="list-group-item">
                         <div class="md-v-line"></div>
@@ -30,7 +30,7 @@ if (user?.user && scoter) {
                     </li>
                     <li class="list-group-item">
                         <div class="md-v-line"></div>
-                        <i class="fas fa-map-marked-alt mr-5 Color fa-2x"></i>Location: 1${scoter['location']}
+                        <i class="fas fa-map-marked-alt mr-5 Color fa-2x"></i>Location: ${scoter['location']}
                     </li>
                 </ul>
             </div>
@@ -53,13 +53,13 @@ function Arrive() {
 function GoLocation(delvary_id) {
 
     var GoLocation = JSON.parse(localStorage.getItem('GoLocation'))
-    var UserLocation = JSON.parse(localStorage.getItem('UserLocation'))
+    var EndLocation = JSON.parse(localStorage.getItem('GetUserLocation'))
     var lanLongGOTO = JSON.parse(localStorage.getItem('lanLongGOTO'))
-    console.log(lanLongGOTO);
+    // console.log(UserLocation);
     var data = JSON.stringify({
         "delvary_id": delvary_id,
         "user_location": lanLongGOTO.UserLocation.userAddress,
-        "end_location": lanLongGOTO.UserLocation.userAddress,
+        "end_location": EndLocation,
         "lat_s": lanLongGOTO.UserLocation.LatLong.lat,
         "long_s": lanLongGOTO.UserLocation.LatLong.lng,
         "lat_e": lanLongGOTO.GoTo.lat,
@@ -71,7 +71,13 @@ function GoLocation(delvary_id) {
 
     xhr.addEventListener("readystatechange", function () {
         if (this.readyState === 4) {
-            console.log(this.responseText);
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: 'Waiting For Captin',
+                showConfirmButton: false,
+                timer: 1500
+            })
             document.getElementById('Accept').style.display = 'none'
         } else {
             Swal.fire({
