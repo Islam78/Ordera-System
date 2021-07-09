@@ -18,6 +18,7 @@ if (user.delvary) {
         var element = document.getElementById('Action')
         element.innerText = 'Finish'
         if (element.value == 'Finish') {
+            AcceptDelivary()
             window.location = './Captin.html'
         } else {
             element.value = 'Finish'
@@ -28,4 +29,28 @@ if (user.delvary) {
 } else {
     window.location = './../pages/404.html'
 
+}
+
+
+
+function AcceptDelivary() {
+    console.log('getOrderDelivary');
+    var data = JSON.stringify({
+        "delvary_id": user.delvary,
+        "type": "delivery"
+    });
+    var xhr = new XMLHttpRequest();
+    xhr.withCredentials = true;
+
+    xhr.addEventListener("readystatechange", function () {
+        if (this.readyState === 4) {
+            console.log(this.responseText);
+            window.location = './../pages/AcceptTran.html'
+        }
+    });
+
+    xhr.open("POST", "https://orderasystem.herokuapp.com/delvary/approve");
+    xhr.setRequestHeader("Content-Type", "application/json");
+
+    xhr.send(data);
 }

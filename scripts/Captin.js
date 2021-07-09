@@ -1,5 +1,7 @@
 user = JSON.parse(localStorage.getItem('user'))
 if (user.delvary) {
+
+    // console.log(JSON.parse(localStorage.getItem('AcceptTransportation')));
     document.addEventListener("DOMContentLoaded", (event) => {
         const MAP_READY_INTERVAL = setInterval(() => {
             if (GlobalLatlng.lat) {
@@ -69,7 +71,7 @@ if (user.delvary) {
     // sennd to back
     function SendStatus() {
         let delivaryLocation = JSON.parse(localStorage.getItem('DelivaryAddressShared'))
-        var data = JSON.stringify({ "delvary_id": user.delvary, "status": Status.value, "type": Category.value == 1 ? 1 : 0,  "location": delivaryLocation })
+        var data = JSON.stringify({ "delvary_id": user.delvary, "status": Status.value, "type": Category.value == 1 ? 1 : 0, "location": delivaryLocation })
         console.log(data);
         var xhr = new XMLHttpRequest();
         xhr.withCredentials = true;
@@ -254,10 +256,10 @@ function AcceptTransportation() {
     xhr.addEventListener("readystatechange", function () {
         if (this.readyState === 4) {
             console.log(this.responseText);
-            window.location = './../pages/AcceptTran.html'
+            // window.location = './../pages/AcceptTran.html'
         }
     });
-
+// https://orderasystem.herokuapp.com/
     xhr.open("POST", "https://orderasystem.herokuapp.com/delvary/approve");
     xhr.setRequestHeader("Content-Type", "application/json");
 
@@ -265,36 +267,6 @@ function AcceptTransportation() {
 }
 var delivery_dirction
 function GetUserLatLng() {
-    // console.log('GetUserLatLng', delivery_dirction.user_location);
-    // // ************user place************************ 
-    // // var data = "";
-
-    // var xhr = new XMLHttpRequest();
-    // xhr.withCredentials = true;
-
-    // xhr.addEventListener("readystatechange", function () {
-    //     if (this.readyState === 4) {
-    //         console.log('googleapis', this.responseText);
-    //     }
-    // });
-    // xhr.open("GET", `https://maps.googleapis.com/maps/api/geocode/json?address=${delivery_dirction.user_location}&key=AIzaSyC_5HAzjVTSMJ3SFuZcxyv3-eddSB_70NE`);
-    // xhr.send();
-    // // ************resturant place************************ 
-    // // get user lat and long
-    // // var data = "";
-
-    // var xhr = new XMLHttpRequest();
-    // xhr.withCredentials = true;
-
-    // xhr.addEventListener("readystatechange", function () {
-    //     if (this.readyState === 4) {
-    //         console.log(this.responseText);
-    //     }
-    // });
-
-    // xhr.open("POST", "https://maps.googleapis.com/maps/api/geocode/json?address=Ahmed%20Ateya,%20Al%20Khosous,%20El%20Marg,%20Cairo%20Governorate,%20Egypt&key=AIzaSyC_5HAzjVTSMJ3SFuZcxyv3-eddSB_70NE");
-
-    // xhr.send(data);
 
 }
 
@@ -306,6 +278,7 @@ function GetDelivery() {
     xhr.addEventListener("readystatechange", function () {
         if (this.readyState === 4) {
             resturant_dirction = JSON.parse(this.responseText).results[0].geometry.location
+
             delivery_dirction = JSON.parse(this.responseText).results[1].geometry.location
             let AcceptTransportation = [{
                 lat_s: resturant_dirction.lat,
@@ -314,33 +287,10 @@ function GetDelivery() {
                 long_e: delivery_dirction.lng
             }]
             localStorage.setItem('AcceptTransportation', JSON.stringify(AcceptTransportation))
-            console.log('AcceptTransportation',AcceptTransportation);
-            GetUserLatLng()
+            window.location = './../pages/AcceptTran.html'
         }
     });
     xhr.open("GET", `https://orderasystem.herokuapp.com/user/delivery_dirction/${user.delvary}`);
-
-    xhr.send(data);
-}
-function AcceptDelivary() {
-    console.log('getOrderDelivary');
-    var data = JSON.stringify({
-        "delvary_id": user.delvary,
-        "type": "delivery"
-    });
-    var xhr = new XMLHttpRequest();
-    xhr.withCredentials = true;
-
-    xhr.addEventListener("readystatechange", function () {
-        if (this.readyState === 4) {
-            console.log(this.responseText);
-            GetDelivery()
-            // window.location = './../pages/AcceptTran.html'
-        }
-    });
-
-    xhr.open("POST", "https://orderasystem.herokuapp.com/delvary/approve");
-    xhr.setRequestHeader("Content-Type", "application/json");
 
     xhr.send(data);
 }
