@@ -116,13 +116,7 @@ function updateUser(form) {
             localStorage.setItem('user', JSON.stringify(JSON.parse(this.responseText).result))
 
         } else {
-            Swal.fire({
-                position: 'top-end',
-                icon: 'error',
-                title: 'Error',
-                showConfirmButton: false,
-                timer: 1500
-            })
+       
         }
     });
 
@@ -160,13 +154,7 @@ function updateDelivary() {
             localStorage.setItem('user', JSON.stringify(JSON.parse(this.responseText).result))
 
         } else {
-            Swal.fire({
-                position: 'top-end',
-                icon: 'error',
-                title: 'Error',
-                showConfirmButton: false,
-                timer: 1500
-            })
+         
         }
     });
 

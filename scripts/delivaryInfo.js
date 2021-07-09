@@ -21,7 +21,6 @@ if (user?.user) {
                         var subData
                         for (res of result) {
                             res.qty = 0
-                            // res.description.slice(0,10)
                             subData += `
                                         <div class="card col-md-4 mt-1"> 
                                             <div class="image">
@@ -108,13 +107,7 @@ if (user?.user) {
             if (this.readyState === 4) {
                 ItemData = JSON.parse(this.responseText).result[0]
             } else {
-                Swal.fire({
-                    position: 'top-end',
-                    icon: 'error',
-                    title: 'Error',
-                    showConfirmButton: false,
-                    timer: 1500
-                })
+              
             }
         });
         xhr.open("POST", "https://orderasystem.herokuapp.com/home/categroy");
@@ -151,13 +144,7 @@ if (user?.user) {
                             timer: 1500
                         })
                     } else {
-                        Swal.fire({
-                            position: 'top-end',
-                            icon: 'error',
-                            title: 'Error',
-                            showConfirmButton: false,
-                            timer: 1500
-                        })
+                     
                     }
                 });
                 xhr.open("POST", "https://orderasystem.herokuapp.com/cart/addcart");

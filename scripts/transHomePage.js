@@ -121,13 +121,7 @@ if (user.user) {
           localStorage.setItem('delivaryDetail', JSON.stringify(JSON.parse(this.responseText)))
           window.location = './OrderStateTransportaion.html'
         } else {
-          Swal.fire({
-            position: 'top-end',
-            icon: 'error',
-            title: 'Error',
-            showConfirmButton: false,
-            timer: 1500
-          })
+       
         }
       })
       xhr.open("POST", "https://orderasystem.herokuapp.com/user/transportation");
@@ -138,7 +132,7 @@ if (user.user) {
       Swal.fire({
         position: 'top-end',
         icon: 'error',
-        title: 'Where Is You Go!',
+        title: 'Where Are You Go!',
         showConfirmButton: false,
         timer: 1500
       })

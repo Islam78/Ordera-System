@@ -4,9 +4,6 @@ if (user.delvary) {
     let AcceptTransportation = JSON.parse(localStorage.getItem('AcceptTransportation'));
     let userLocation = { lat: Number(AcceptTransportation[0].lat_s), lng: Number(AcceptTransportation[0].long_s) }
     let userGoto = { lat: Number(AcceptTransportation[0].lat_e), lng: Number(AcceptTransportation[0].long_e) }
-    console.log('from', userLocation);
-    console.log('to', userGoto);
-
     setTimeout(() => {
         const addressForUserGo = { lat: 30, lng: 30 };
         const MAP_READY_INTERVAL = setInterval(() => {

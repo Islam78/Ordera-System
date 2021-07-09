@@ -14,7 +14,7 @@ if (user?.user && scoter) {
                     </li>
                     <li class="list-group-item">
                         <div class="md-v-line"></div>
-                        <i class="fas fa-id-card mr-5 Color fa-2x"></i>delvary Id: ${scoter['delvary_id']}
+                        <i class="far fa-smile  mr-5 Color  fa-2x"></i></i> Rate: ${Math.ceil(Number(scoter['rate']))}
                     </li>
                     <li class="list-group-item">
                         <div class="md-v-line"></div>
@@ -80,13 +80,7 @@ function GoLocation(delvary_id) {
             })
             document.getElementById('Accept').style.display = 'none'
         } else {
-            Swal.fire({
-                position: 'top-end',
-                icon: 'error',
-                title: 'Error',
-                showConfirmButton: false,
-                timer: 1500
-            })
+
         }
     });
 

@@ -14,15 +14,17 @@ if (user?.user && scoter) {
                     </li>
                     <li class="list-group-item">
                         <div class="md-v-line"></div>
-                        <i class="fas fa-id-card mr-5 Color fa-2x"></i>delvary Id: ${scoter['delvary_id']}
+                        <i class="far fa-smile  mr-5 Color  fa-2x"></i></i> Rate: ${
+                            Math.ceil(Number(scoter['rate']))
+                        }
                     </li>
                     <li class="list-group-item">
                         <div class="md-v-line"></div>
-                        <i class="fas fa-motorcycle mr-5 Color fa-2x "></i>Scoter Number: ${scoter['Scooter'] }
+                        <i class="fas fa-motorcycle mr-5 Color fa-2x "></i>Scoter Number: ${scoter['Scooter']}
                     </li>
                     <li class="list-group-item">
                         <div class="md-v-line"></div>
-                        <i class="fas fa-people-arrows mr-5 Color fa-2x"></i>Distance: ${ Number(scoter['distance']).toFixed(2)}  km
+                        <i class="fas fa-people-arrows mr-5 Color fa-2x"></i>Distance: ${Number(scoter['distance']).toFixed(2)}  km
                     </li>
                     <li class="list-group-item">
                         <div class="md-v-line"></div>
@@ -51,7 +53,8 @@ function Arrive() {
     window.location = './rate.html'
 }
 
-function GoLocation() {  var xhr = new XMLHttpRequest();
+function GoLocation() {
+    var xhr = new XMLHttpRequest();
     xhr.withCredentials = true;
 
     xhr.addEventListener("readystatechange", function () {
@@ -65,13 +68,7 @@ function GoLocation() {  var xhr = new XMLHttpRequest();
             })
             document.getElementById('Accept').style.display = 'none'
         } else {
-            Swal.fire({
-                position: 'top-end',
-                icon: 'error',
-                title: 'Error',
-                showConfirmButton: false,
-                timer: 1500
-            })
+
         }
     });
 

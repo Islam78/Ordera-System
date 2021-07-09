@@ -67,13 +67,7 @@ function DeleteUser(id) {
                 })
                 GetAll()
             } else {
-                Swal.fire({
-                    position: 'top-end',
-                    icon: 'error',
-                    title: 'Error',
-                    showConfirmButton: false,
-                    timer: 1500
-                })
+            
             }
         }
     });

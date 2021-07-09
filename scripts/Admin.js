@@ -20,7 +20,7 @@ function GetAll() {
                     <td>${child.Scooter}</td>
                     <td>
                         <button class="btn btn-danger" onclick="Action(${child.id}, 0)" data-toggle="modal"
-                            data-target="#exampleModalCenter">Refuse</button>
+                            data-target="#exampleModalCenter">Reject</button>
                         <button class="btn btn-success" onclick="Action(${child.id}, 1)">Accept</button>
                     </td>
                 </tr>
@@ -33,7 +33,7 @@ function GetAll() {
                 Swal.fire({
                     position: 'top-end',
                     icon: 'error',
-                    title: 'Error',
+                    title: 'Some thing Wrang',
                     showConfirmButton: false,
                     timer: 1500
                 })
@@ -67,13 +67,7 @@ function Action(id, type) {
                 })
                 GetAll()
             } else {
-                Swal.fire({
-                    position: 'top-end',
-                    icon: 'error',
-                    title: 'Error',
-                    showConfirmButton: false,
-                    timer: 1500
-                })
+             
             }
         }
     });

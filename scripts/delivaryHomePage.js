@@ -158,13 +158,7 @@ if (user.user) {
                 ItemData = JSON.parse(this.responseText).result[0]
 
             } else {
-                Swal.fire({
-                    position: 'top-end',
-                    icon: 'error',
-                    title: 'Error',
-                    showConfirmButton: false,
-                    timer: 1500
-                })
+              
             }
         });
         xhr.open("POST", "https://orderasystem.herokuapp.com/home/categroy");
@@ -218,13 +212,7 @@ if (user.user) {
                         timer: 1500
                     })
                 } else {
-                    Swal.fire({
-                        position: 'top-end',
-                        icon: 'error',
-                        title: 'Error',
-                        showConfirmButton: false,
-                        timer: 1500
-                    })
+              
                 }
             });
             xhr.open("POST", "https://orderasystem.herokuapp.com/cart/addcart");

@@ -13,11 +13,12 @@ if (user?.user) {
                 if (this.status === 200) {
                     console.log('successful');
                     var data = JSON.parse(this.responseText).result
-                    var subData
-                    for (res of data) {
-                        // res.description.slice(0,10)
-                        // Total += Number(res.price)
-                        subData += `
+                    if (data.length > 0) {
+                        var subData
+                        for (res of data) {
+                            // res.description.slice(0,10)
+                            // Total += Number(res.price)
+                            subData += `
                             <div class="row border-top border-bottom">
                             <div class="row main align-items-center">
                                 <div class="col-2">
@@ -36,25 +37,22 @@ if (user?.user) {
                                 </div>
                             </div>
                                 `
-                    }
-                    subData ? subData = subData.replace('undefined', '') : ''
-                    console.log('responseText', data);
-                    var totalPrice = 0
-                    for (let index = 0; index < data.length; index++) {
-                        totalPrice += data[index].total
-                    }
-                    data.length < 1 ? data = '' :  document.getElementById('row').innerHTML = subData
-                   
-                    document.getElementById('TotalAmount').innerHTML = totalPrice
+                        }
+                        subData ? subData = subData.replace('undefined', '') : ''
+                        console.log('responseText', data);
+                        var totalPrice = 0
+                        for (let index = 0; index < data.length; index++) {
+                            totalPrice += data[index].total
+                        }
+                        data.length < 1 ? data = '' : document.getElementById('row').innerHTML = subData
+                        document.getElementById('TotalAmount').innerHTML = totalPrice
+                    }else{
+                        document.getElementById('row').innerHTML = ''
+                        document.getElementById('TotalAmount').innerHTML = 0
 
+                    }
                 } else {
-                    Swal.fire({
-                        position: 'top-end',
-                        icon: 'error',
-                        title: 'Error',
-                        showConfirmButton: false,
-                        timer: 1500
-                    })
+
                 }
             }
         });
@@ -75,6 +73,7 @@ if (user?.user) {
 
         xhr.addEventListener("readystatechange", function () {
             if (this.readyState === 4) {
+                getCart()
                 Swal.fire({
                     position: 'top-end',
                     icon: 'success',
@@ -82,15 +81,9 @@ if (user?.user) {
                     showConfirmButton: false,
                     timer: 1500
                 })
-                getCart()
+
             } else {
-                Swal.fire({
-                    position: 'top-end',
-                    icon: 'error',
-                    title: 'Error',
-                    showConfirmButton: false,
-                    timer: 1500
-                })
+
             }
         });
         xhr.open("POST", "https://orderasystem.herokuapp.com/cart/delete_carts");
@@ -121,13 +114,7 @@ if (user?.user) {
                 localStorage.setItem('delivaryDetail', JSON.stringify(JSON.parse(this.responseText)))
                 window.location = './OrderStatedelivary.html'
             } else {
-                Swal.fire({
-                    position: 'top-end',
-                    icon: 'error',
-                    title: 'Error',
-                    showConfirmButton: false,
-                    timer: 1500
-                })
+
             }
         });
 

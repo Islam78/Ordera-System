@@ -1,7 +1,5 @@
 user = JSON.parse(localStorage.getItem('user'))
 if (user.delvary) {
-
-    // console.log(JSON.parse(localStorage.getItem('AcceptTransportation')));
     document.addEventListener("DOMContentLoaded", (event) => {
         const MAP_READY_INTERVAL = setInterval(() => {
             if (GlobalLatlng.lat) {
@@ -49,26 +47,18 @@ if (user.delvary) {
                 getOrderTransportation()
             } else if (Category.value == 2) {
                 SendStatus()
-                Swal.fire({
-                    position: 'top-end',
-                    icon: 'success',
-                    title: 'Delivary',
-                    showConfirmButton: false,
-                    timer: 1500
-                })
+                // Swal.fire({
+                //     position: 'top-end',
+                //     icon: 'success',
+                //     title: 'Delivary',
+                //     showConfirmButton: false,
+                //     timer: 1500
+                // })
                 alert.style.display = 'none'
                 getOrderDelivary()
             }
 
         } else {
-
-            Swal.fire({
-                position: 'top-end',
-                icon: 'error',
-                title: 'You are not acctive',
-                showConfirmButton: false,
-                timer: 1500
-            })
             console.log('notActive');
             document.getElementById('bodyTrans').style.display = 'none'
             document.getElementById('HeadTrans').style.display = 'none'
@@ -79,7 +69,7 @@ if (user.delvary) {
     // sennd to back
     function SendStatus() {
         let delivaryLocation = JSON.parse(localStorage.getItem('DelivaryAddressShared'))
-        var data = JSON.stringify({ "delvary_id": user.delvary, "status": Status.value, "type": Category.value, "location": delivaryLocation })
+        var data = JSON.stringify({ "delvary_id": user.delvary, "status": Status.value, "type": Category.value == 1 ? 1 : 0,  "location": delivaryLocation })
         console.log(data);
         var xhr = new XMLHttpRequest();
         xhr.withCredentials = true;
@@ -94,13 +84,7 @@ if (user.delvary) {
                 })
 
             } else {
-                Swal.fire({
-                    position: 'top-end',
-                    icon: 'error',
-                    title: 'Error',
-                    showConfirmButton: false,
-                    timer: 1500
-                })
+
             }
         });
         xhr.open("put", "https://orderasystem.herokuapp.com/user/status");
@@ -147,13 +131,7 @@ if (user.delvary) {
                 childData ? childData = childData.replace('undefined', '') : childData = ''
                 document.getElementById('bodyTrans').innerHTML = childData
             } else {
-                Swal.fire({
-                    position: 'top-end',
-                    icon: 'error',
-                    title: 'Error',
-                    showConfirmButton: false,
-                    timer: 1500
-                })
+
             }
         });
         xhr.open("POST", "https://orderasystem.herokuapp.com/delvary/transportation");
@@ -175,7 +153,7 @@ if (user.delvary) {
                 Swal.fire({
                     position: 'top-end',
                     icon: 'success',
-                    title: 'Delivary',
+                    title: 'Delivery',
                     showConfirmButton: false,
                     timer: 1500
                 })
@@ -205,7 +183,7 @@ if (user.delvary) {
                                                 </div>
                                             </div>
                                             
-                                            <div class="row " id="${item?.menuId}">
+                                            <div class="row " id="Sub${item.menuId}">
                                             </div>
                                         </div>
                                     </div>
@@ -217,42 +195,39 @@ if (user.delvary) {
 
                 for (let index = 0; index < result.length; index++) {
                     var item = result[index]
-                    var TGrandChild
+                    var TGrandChild = ''
                     for (let child = 0; child < item.menu?.length; child++) {
                         childItem = item.menu[child]
                         TGrandChild +=
                             `
-                    
-                        <div class="col-12" >
-                        <hr class="my-3">
-                            <div class="col mt-auto">
-                                <div class="media row justify-content-between ">
-                                    <div class="col my-auto ">
-                                        Product Name:  ${childItem.product_name}
-                                    </div>
-                                    <div class="col my-auto ">
-                                        ${childItem.qty} | ${childItem.total / childItem.qty} 
-                                    </div>
-                                    <div class="col my-auto " style="font-weight: bolder;">
-                                        Total: ${childItem.total}
+                                <div class="col-12" >
+                                    <hr class="my-3">
+                                    <div class="col mt-auto">
+                                        <div class="media row justify-content-between ">
+                                            <div class="col my-auto ">
+                                                Product Name:  ${childItem.product_name}
+                                            </div>
+                                            <div class="col my-auto ">
+                                                ${childItem.qty} | ${childItem.total / childItem.qty} 
+                                            </div>
+                                            <div class="col my-auto " style="font-weight: bolder;">
+                                                Total: ${childItem.total}
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                    `
+                            `
                         TGrandChild = TGrandChild ? TGrandChild.replace('undefined', '') : ''
-                        document.getElementById(`${item.menuId}`).innerHTML = TGrandChild
+                        document.getElementById(`Sub${item.menuId}`).innerHTML = TGrandChild
+                        // TGrandChild =''
                         // return;
+
+
                     }
+
                 }
             } else {
-                Swal.fire({
-                    position: 'top-end',
-                    icon: 'error',
-                    title: 'Error',
-                    showConfirmButton: false,
-                    timer: 1500
-                })
+
             }
         });
         xhr.open("POST", "https://orderasystem.herokuapp.com/delvary/delivery");
@@ -288,9 +263,66 @@ function AcceptTransportation() {
 
     xhr.send(data);
 }
+var delivery_dirction
+function GetUserLatLng() {
+    // console.log('GetUserLatLng', delivery_dirction.user_location);
+    // // ************user place************************ 
+    // // var data = "";
 
+    // var xhr = new XMLHttpRequest();
+    // xhr.withCredentials = true;
+
+    // xhr.addEventListener("readystatechange", function () {
+    //     if (this.readyState === 4) {
+    //         console.log('googleapis', this.responseText);
+    //     }
+    // });
+    // xhr.open("GET", `https://maps.googleapis.com/maps/api/geocode/json?address=${delivery_dirction.user_location}&key=AIzaSyC_5HAzjVTSMJ3SFuZcxyv3-eddSB_70NE`);
+    // xhr.send();
+    // // ************resturant place************************ 
+    // // get user lat and long
+    // // var data = "";
+
+    // var xhr = new XMLHttpRequest();
+    // xhr.withCredentials = true;
+
+    // xhr.addEventListener("readystatechange", function () {
+    //     if (this.readyState === 4) {
+    //         console.log(this.responseText);
+    //     }
+    // });
+
+    // xhr.open("POST", "https://maps.googleapis.com/maps/api/geocode/json?address=Ahmed%20Ateya,%20Al%20Khosous,%20El%20Marg,%20Cairo%20Governorate,%20Egypt&key=AIzaSyC_5HAzjVTSMJ3SFuZcxyv3-eddSB_70NE");
+
+    // xhr.send(data);
+
+}
+
+function GetDelivery() {
+    // get user lat and long
+    var data = "";
+    var xhr = new XMLHttpRequest();
+    xhr.withCredentials = true;
+    xhr.addEventListener("readystatechange", function () {
+        if (this.readyState === 4) {
+            resturant_dirction = JSON.parse(this.responseText).results[0].geometry.location
+            delivery_dirction = JSON.parse(this.responseText).results[1].geometry.location
+            let AcceptTransportation = [{
+                lat_s: resturant_dirction.lat,
+                long_s: resturant_dirction.lng,
+                lat_e: delivery_dirction.lat,
+                long_e: delivery_dirction.lng
+            }]
+            localStorage.setItem('AcceptTransportation', JSON.stringify(AcceptTransportation))
+            console.log('AcceptTransportation',AcceptTransportation);
+            GetUserLatLng()
+        }
+    });
+    xhr.open("GET", `https://orderasystem.herokuapp.com/user/delivery_dirction/${user.delvary}`);
+
+    xhr.send(data);
+}
 function AcceptDelivary() {
-    // localStorage.setItem('AcceptTransportation', JSON.stringify(result))
     console.log('getOrderDelivary');
     var data = JSON.stringify({
         "delvary_id": user.delvary,
@@ -302,7 +334,8 @@ function AcceptDelivary() {
     xhr.addEventListener("readystatechange", function () {
         if (this.readyState === 4) {
             console.log(this.responseText);
-            window.location = './../pages/AcceptTran.html'
+            GetDelivery()
+            // window.location = './../pages/AcceptTran.html'
         }
     });
 
