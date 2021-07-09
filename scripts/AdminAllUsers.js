@@ -16,8 +16,8 @@ function GetAll() {
                     <tr>
                     <td>${c.delvary_id}</td>
                     <td>${c.First_name} ${c.last_name}</td>
-                    <td>${'011'}</td>
-                    <td>${'4521'}</td>
+                    <td>${c.online_status ? 'Delivery' : 'Transpotation'}</td>
+                    <td>${c.Scooter}</td>
                     <td>
                         <button class="btn btn-danger" onclick="DeleteUser(${c.delvary_id})">Delete</button>
                     </td>

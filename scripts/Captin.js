@@ -35,6 +35,7 @@ if (user.delvary) {
                 showConfirmButton: false,
                 timer: 1500
             })
+            alert.innerText = 'Please Select Your Category'
 
             if (Category.value == 1) {
                 SendStatus()
@@ -62,6 +63,7 @@ if (user.delvary) {
 
         } else {
             console.log('notActive');
+            alert.innerText = 'You Are Not Available    '
             document.getElementById('bodyTrans').style.display = 'none'
             document.getElementById('HeadTrans').style.display = 'none'
             document.getElementById('bodyDelivary').style.display = 'none'
@@ -120,6 +122,7 @@ if (user.delvary) {
                         <td>${child.From_location}</td>
                         <td>${child.to_location}</td>
                         <td>${child.duration}</td>
+                        <td>${Number(child.duration.replace('mins', '')) * 1.75} EGP</td>
                         <td>${Number(child.distance) / 1.60} km</td>
                         <td>
                             <a >
@@ -256,10 +259,10 @@ function AcceptTransportation() {
     xhr.addEventListener("readystatechange", function () {
         if (this.readyState === 4) {
             console.log(this.responseText);
-            // window.location = './../pages/AcceptTran.html'
+            window.location = './../pages/AcceptTran.html'
         }
     });
-// https://orderasystem.herokuapp.com/
+    // https://orderasystem.herokuapp.com/
     xhr.open("POST", "https://orderasystem.herokuapp.com/delvary/approve");
     xhr.setRequestHeader("Content-Type", "application/json");
 

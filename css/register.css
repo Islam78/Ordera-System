@@ -16,6 +16,9 @@ body {
   text-decoration: none;
   color: black;
 }
+#Scooter{
+  display: none;
+}
 /* end role */
 /* start nav */
 /* end nav */

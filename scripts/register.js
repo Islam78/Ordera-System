@@ -5,12 +5,13 @@ function TypeChange() {
         document.getElementById("Register").innerHTML = `
         <button class="form-control mt-3" type="button" onclick="registerUser()">Create Account</button>
        `
-        document.getElementById('loc').setAttribute('placeholder', 'location')
+        document.getElementById('Scooter').style.display = 'none';
+
     } else if (element == 'Delvary') {
         document.getElementById("Register").innerHTML = `
         <button class="form-control mt-3" type="button" onclick="registerDelivary()">Create Account</button>
         `
-        document.getElementById('loc').setAttribute('placeholder', 'Scooter')
+        document.getElementById('Scooter').style.display = 'block';
     }
 }
 
@@ -21,14 +22,12 @@ function registerUser() {
     var password = document.getElementById('password');
     var ConfirmPassowrd = document.getElementById('ConfirmPassowrd');
     var email = document.getElementById('email');
-    var location = document.getElementById('loc')
     var RegisterForm = {
         "type": 'user',
         "first_name": first_name,
         "last_name": last_name,
         "password": password.value,
         "email": email.value,
-        "location": location.value
     }
     IsEmail = false
     IsPassord = false
@@ -103,14 +102,14 @@ function registerDelivary() {
     var password = document.getElementById('password');
     var ConfirmPassowrd = document.getElementById('ConfirmPassowrd');
     var email = document.getElementById('email');
-    var location = document.getElementById('loc')
+    var Scooter = document.getElementById('Scooter');
     var RegisterForm = {
         "type": 'user',
         "first_name": first_name,
         "last_name": last_name,
         "password": password.value,
         "email": email.value,
-        "location": location.value
+        "Scooter": Scooter.value
     }
     IsEmail = false
     IsPassord = false

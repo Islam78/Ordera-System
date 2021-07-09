@@ -18,16 +18,20 @@ if (user?.user && scoter) {
                     </li>
                     <li class="list-group-item">
                         <div class="md-v-line"></div>
-                        <i class="fas fa-motorcycle mr-5 Color fa-2x "></i>Scoter Number: ${scoter['Scooter'] == 'undefined' ? scoter['Scooter'] : 0}
+                        <i class="fas fa-motorcycle mr-5 Color fa-2x "></i>Scoter Number: ${scoter['Scooter']}
                     </li>
                     <li class="list-group-item">
                         <div class="md-v-line"></div>
-                        <i class="fas fa-people-arrows mr-5 Color fa-2x"></i>Distance: ${Number(Number(scoter['distance']) / 1.60).toFixed(2)}  km
+                        <i class="fas fa-people-arrows mr-5 Color fa-2x"></i>Distance: <span id="distance">${Number(Number(scoter['distance']) / 1.60)}  km</span>
                     </li>
                     <li class="list-group-item">
                         <div class="md-v-line"></div>
-                        <i class="fas fa-location-arrow mr-5 Color fa-2x"></i>Duration: ${scoter['duration']}
+                        <i class="fas fa-location-arrow mr-5 Color fa-2x"></i>Duration: <span id="duration">${scoter['duration']}</span>
                     </li>
+                    <li class="list-group-item">
+                        <div class="md-v-line"></div>
+                        <i class="fas fa-hand-holding-usd mr-5 Color fa-2x"></i>Price: <span id="price">After Active</span>
+                    </li> 
                     <li class="list-group-item">
                         <div class="md-v-line"></div>
                         <i class="fas fa-map-marked-alt mr-5 Color fa-2x"></i>Location: ${scoter['location']}
@@ -71,6 +75,9 @@ function GoLocation(delvary_id) {
 
     xhr.addEventListener("readystatechange", function () {
         if (this.readyState === 4) {
+            document.getElementById('distance').innerText = `${JSON.parse(this.responseText).distance} km`
+            document.getElementById('duration').innerText = JSON.parse(this.responseText).duration
+            document.getElementById('price').innerText = `${JSON.parse(this.responseText).salary} EGP`
             Swal.fire({
                 position: 'top-end',
                 icon: 'success',

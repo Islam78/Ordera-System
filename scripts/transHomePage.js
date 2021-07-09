@@ -19,19 +19,19 @@ if (user.user) {
           if (status == google.maps.places.PlacesServiceStatus.OK) {
             // console.log(results);
             if (results.length === 1) {
-              const item = results[0];
-              const lat = item.geometry.location.lat();
-              const lng = item.geometry.location.lng();
-              // then road map .
-              console.group("Data for Point B (To go): ");
-              console.log("Name: ", item.name);
-              document.getElementById("recommend").style.display = "block";
-              document.getElementById("recommend").innerHTML += `
-                        <span class="child" type="button">${item.name}</span> 
-                        `;
-              console.groupEnd();
-              // Draw a road and hide search options
-              displayRoute({ from: GlobalLatlng, to: { lat, lng } });
+              // const item = results[0];
+              // const lat = item.geometry.location.lat();
+              // const lng = item.geometry.location.lng();
+              // // then road map .
+              // console.group("Data for Point B (To go): ");
+              // console.log("Name: ", item.name);
+              // document.getElementById("recommend").style.display = "block";
+              // document.getElementById("recommend").innerHTML += `
+              //           <span class="child" type="button">${item.name}</span> 
+              //           `;
+              // console.groupEnd();
+              // // Draw a road and hide search options
+              // displayRoute({ from: GlobalLatlng, to: { lat, lng } });
             } else {
               //   results.map((item) => {
               // console.log("Name: ", item.name);
