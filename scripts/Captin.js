@@ -122,8 +122,8 @@ if (user.delvary) {
                         <td>${child.From_location}</td>
                         <td>${child.to_location}</td>
                         <td>${child.duration}</td>
-                        <td>${Number(child.duration.replace('mins', '')) * 1.75} EGP</td>
-                        <td>${Number(child.distance) / 1.60} km</td>
+                        <td>${Number(child.salary)} EGP</td>
+                        <td>${Number(child.distance)} km</td>
                         <td>
                             <a >
                                 <button class="btn btnColor" onclick="AcceptTransportation()">Get Direction</button>
@@ -171,7 +171,11 @@ if (user.delvary) {
                         `
                             <div class="col-12 m-1" >
                                     <div class="card card-2">
+                                    
                                         <div class="card-body" style="color:black;background:#F7B614;font-weight:bolder;">
+                                        <div class="row " id="TotalSalary">
+                                            </div>
+                                            <hr>
                                             <div class="media">
                                                 <div class="media-body my-auto text-right">
                                                     <div class="row my-auto flex-column flex-md-row">
@@ -190,6 +194,7 @@ if (user.delvary) {
                                             
                                             <div class="row " id="Sub${item.menuId}">
                                             </div>
+                                            
                                         </div>
                                     </div>
                                 </div>
@@ -224,11 +229,28 @@ if (user.delvary) {
                             `
                         TGrandChild = TGrandChild ? TGrandChild.replace('undefined', '') : ''
                         document.getElementById(`Sub${item.menuId}`).innerHTML = TGrandChild
-                        // TGrandChild =''
-                        // return;
-
-
                     }
+                    delvery_total = JSON.parse(this.responseText)
+                    console.log();
+                    let Total = `<div class="col-12" >
+                    <hr class="my-3">
+                    <div class="col mt-auto">
+                        <div class="media row justify-content-between ">
+                            <div class="col my-auto " style="font-weight: bolder;">
+                            Total Cart: ${delvery_total.salary[0].total_cart}
+                            </div>
+                            <div class="col my-auto ">
+                            Service Charge:  ${delvery_total.salary[0].salary}
+                            </div>
+                            <div class="col my-auto ">
+                            Total Amount ${delvery_total.salary[0].total} 
+                            </div>
+                        </div>
+                    </div>
+                </div>`
+                    TGrandChild += Total
+                    TGrandChild = TGrandChild ? TGrandChild.replace('undefined', '') : ''
+                    document.getElementById(`TotalSalary`).innerHTML = TGrandChild
 
                 }
             } else {
@@ -244,14 +266,14 @@ if (user.delvary) {
     window.location = './../pages/404.html'
 }
 
-function AcceptTransportation() {
-    if (JSON.parse(localStorage.getItem('AcceptTransportation')) != null) {
-        console.log(JSON.parse(localStorage.getItem('AcceptTransportation')));
-        // window.location = './../pages/AcceptTran.html'
-    }
+var delivery_dirction
+function GetUserLatLng() {
+
+}
+function deleteDelvary() {
     var data = JSON.stringify({
         "delvary_id": user.delvary,
-        "type": "transportation"
+        "type": 'delivery'
     });
     var xhr = new XMLHttpRequest();
     xhr.withCredentials = true;
@@ -262,17 +284,10 @@ function AcceptTransportation() {
             window.location = './../pages/AcceptTran.html'
         }
     });
-    // https://orderasystem.herokuapp.com/
     xhr.open("POST", "https://orderasystem.herokuapp.com/delvary/approve");
     xhr.setRequestHeader("Content-Type", "application/json");
-
     xhr.send(data);
 }
-var delivery_dirction
-function GetUserLatLng() {
-
-}
-
 function GetDelivery() {
     // get user lat and long
     var data = "";
@@ -290,10 +305,36 @@ function GetDelivery() {
                 long_e: delivery_dirction.lng
             }]
             localStorage.setItem('AcceptTransportation', JSON.stringify(AcceptTransportation))
-            window.location = './../pages/AcceptTran.html'
+            deleteDelvary()
         }
     });
     xhr.open("GET", `https://orderasystem.herokuapp.com/user/delivery_dirction/${user.delvary}`);
+
+    xhr.send(data);
+}
+
+
+function AcceptTransportation() {
+    if (JSON.parse(localStorage.getItem('AcceptTransportation')) != null) {
+        console.log(JSON.parse(localStorage.getItem('AcceptTransportation')));
+        // window.location = './../pages/AcceptTran.html'
+    }
+    var data = JSON.stringify({
+        "delvary_id": user.delvary,
+        "type": 'transportation'
+    });
+    var xhr = new XMLHttpRequest();
+    xhr.withCredentials = true;
+
+    xhr.addEventListener("readystatechange", function () {
+        if (this.readyState === 4) {
+            console.log(this.responseText);
+            window.location = './../pages/AcceptTran.html'
+        }
+    });
+    // https://orderasystem.herokuapp.com/
+    xhr.open("POST", "https://orderasystem.herokuapp.com/delvary/approve");
+    xhr.setRequestHeader("Content-Type", "application/json");
 
     xhr.send(data);
 }
